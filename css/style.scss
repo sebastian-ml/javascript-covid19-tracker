@@ -1,0 +1,42 @@
+@import 'mixins';
+@import 'clear-tags';
+
+*, *:after, *:before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.header {
+  @include flexCentered;
+  background-color: #414141;
+  color: #ffffffde;
+  height: 55px;
+  box-shadow: 0 1px 1px 0 rgba(65,65,65,0.8);
+  -webkit-box-shadow: 0 1px 1px 0 rgba(65,65,65,0.8);
+  -moz-box-shadow: 0 1px 1px 0 rgba(65,65,65,0.8);
+}
+
+.nav {
+  &__list {
+    list-style: none;
+    display: flex;
+
+    &-item {
+      margin-left: 1em;
+    }
+  }
+
+  &__link {
+    transition: all 200ms ease-in-out;
+    &:hover {
+      color: #fff;
+    }
+  }
+}
+
+.container {
+  width: 1700px;
+  max-width: 90%;
+  @include flexCentered(space-between);
+}

@@ -1,0 +1,21 @@
+.icon-right-open {
+  content: '\e75e';
+  color: $primaryFontColor;
+}
+
+.icon-open-arrows {
+  @include flexCentered;
+  height: $headerHeight;
+
+  .icon-right-open {
+    color: $primaryFontColor;
+  }
+
+  .icon-right-open:nth-child(2) {
+    margin-left: -.4em;
+  }
+}
+
+.icon-right-open, .icon-flag, .icon-globe {
+  font-size: 1.4rem;
+}

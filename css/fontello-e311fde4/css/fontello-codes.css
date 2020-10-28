@@ -1,0 +1,6 @@
+@charset "UTF-8";
+
+ 
+.icon-flag:before { content: '\2691'; } /* '⚑' */
+.icon-right-open:before { content: '\e75e'; } /* '' */
+.icon-globe:before { content: '🌎'; } /* '\1f30e' */

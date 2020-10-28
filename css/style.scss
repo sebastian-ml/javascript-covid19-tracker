@@ -19,6 +19,32 @@
   box-shadow: 1px 1px 1px 0 rgba(65,65,65,0.8);
   -webkit-box-shadow: 1px 1px 1px 0 rgba(65,65,65,0.8);
   -moz-box-shadow: 1px 1px 1px 0 rgba(65,65,65,0.8);
+  transition: width $mediumAnimation linear;
+
+  .nav__text {
+    transition: opacity 3s ease;
+  }
+
+  &:hover {
+    width: 200px;
+    overflow: hidden;
+
+    .nav {
+      width: 200px; // Same as parent div
+    }
+
+    .nav__text {
+      display: inline;
+    }
+
+    .icon-open-arrows {
+      transform: rotate(-180deg);
+
+      .icon-right-open {
+        color: #fff;
+      }
+    }
+  }
 }
 
 main {
@@ -37,6 +63,8 @@ main {
 }
 
 .nav {
+  height: 100%;
+
   &__list {
     list-style: none;
     display: flex;
@@ -48,7 +76,7 @@ main {
         width: 100%;
         height: $sidebarWidth;
         margin-left: 0;
-        transition: all 100ms ease-in-out;
+        transition: all $shortAnimation ease-in-out;
         color: $primaryFontColor;
 
         &:hover {
@@ -64,10 +92,10 @@ main {
 
   &__link {
     color: $primaryFontColor;
-    transition: all 100ms ease-in-out;
-    @include flexCentered(center, column);
-    width: 100%;
+    transition: all $shortAnimation ease-in-out;
     height: 100%;
+    display: flex;
+    align-items: center;
 
     &:hover {
       color: #fff;

@@ -30,7 +30,7 @@
  
   display: inline-block;
   text-decoration: inherit;
-  width: 1em;
+  /*width: 1em;*/
   /*margin-right: .2em;*/
   text-align: center;
   /* opacity: .8; */
@@ -40,7 +40,7 @@
   text-transform: none;
  
   /* fix buttons height, for twitter bootstrap */
-  line-height: 1em;
+  /*line-height: 1em;*/
  
   /* Animation center compensation - margins should be symmetric */
   /* remove if not needed */

@@ -12,10 +12,20 @@
   }
 
   .icon-right-open:nth-child(2) {
-    margin-left: -.4em;
+    margin-left: -.2em;
   }
+
+  transition: all $mediumAnimation ease;
 }
 
 .icon-right-open, .icon-flag, .icon-globe {
   font-size: 1.4rem;
+}
+
+.aside {
+  .icon-globe, .icon-flag {
+    width: $sidebarWidth;
+    display: flex;
+    justify-content: center;
+  }
 }

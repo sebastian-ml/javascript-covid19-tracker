@@ -5,29 +5,29 @@
 
 *, *:after, *:before {
   box-sizing: border-box;
-  padding: 0;
   margin: 0;
+  padding: 0;
 }
 
 .aside {
-  width: $sidebarWidth;
-  background-color: $primaryColor;
   position: fixed;
-  height: 100vh;
-  left: 0;
   top: 0;
-  box-shadow: 1px 1px 1px 0 rgba(65,65,65,0.8);
-  -webkit-box-shadow: 1px 1px 1px 0 rgba(65,65,65,0.8);
-  -moz-box-shadow: 1px 1px 1px 0 rgba(65,65,65,0.8);
+  left: 0;
+  width: $sidebarWidth;
+  height: 100vh;
   transition: width $mediumAnimation linear;
+  background-color: $primaryColor;
+  -moz-box-shadow: 1px 1px 1px 0 rgba(65,65,65,0.8);
+  -webkit-box-shadow: 1px 1px 1px 0 rgba(65,65,65,0.8);
+  box-shadow: 1px 1px 1px 0 rgba(65,65,65,0.8);
 
   .nav__text {
     transition: opacity 3s ease;
   }
 
   &:hover {
-    width: 200px;
     overflow: hidden;
+    width: 200px;
 
     .nav {
       width: 200px; // Same as parent div
@@ -47,27 +47,22 @@
   }
 }
 
-main {
-  background-color: #f0f0f070;
-  margin-left: $sidebarWidth;
-}
-
 .header {
   @include flexCentered;
-  background-color: $primaryColor;
-  color: $primaryFontColor;
   height: $headerHeight;
-  box-shadow: 0 1px 1px 0 rgba(65,65,65,0.8);
-  -webkit-box-shadow: 0 1px 1px 0 rgba(65,65,65,0.8);
+  color: $primaryFontColor;
+  background-color: $primaryColor;
   -moz-box-shadow: 0 1px 1px 0 rgba(65,65,65,0.8);
+  -webkit-box-shadow: 0 1px 1px 0 rgba(65,65,65,0.8);
+  box-shadow: 0 1px 1px 0 rgba(65,65,65,0.8);
 }
 
 .nav {
   height: 100%;
 
   &__list {
-    list-style: none;
     display: flex;
+    list-style: none;
 
     &--vertical {
       flex-direction: column;
@@ -91,11 +86,11 @@ main {
   }
 
   &__link {
-    color: $primaryFontColor;
-    transition: all $shortAnimation ease-in-out;
-    height: 100%;
     display: flex;
     align-items: center;
+    height: 100%;
+    transition: all $shortAnimation ease-in-out;
+    color: $primaryFontColor;
 
     &:hover {
       color: #fff;
@@ -111,4 +106,63 @@ main {
   width: 1700px;
   max-width: 90%;
   @include flexCentered(space-between);
+}
+
+.card {
+  height: 600px;
+  border: #d9d9d9 1px solid;
+  border-radius: 7px;
+  background-color: #fff;
+  padding: 2.5em;
+
+  &--large {
+    flex: 1;
+    min-width: 600px;
+  }
+
+  &--medium {
+    min-width: 500px;
+  }
+
+  &__header {
+    text-align: center;
+  }
+}
+
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
+  .card--medium {
+    margin-left: 1.5em;
+  }
+}
+
+.heading {
+  &--large {
+    font-size: 3rem;
+    color: #202020;
+  }
+}
+
+.desc-list {
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: column;
+
+  &__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: .75em 0;
+  }
+
+  &__key {
+    font-size: 1em;
+  }
+
+  &__value {
+    font-size: 1.5em;
+  }
 }

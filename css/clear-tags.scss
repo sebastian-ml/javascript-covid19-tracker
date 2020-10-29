@@ -1,3 +1,5 @@
+@import 'variables';
+
 a {
   text-decoration: none;
   color: inherit;
@@ -11,4 +13,24 @@ h1 {
   font-weight: 400;
   font-size: 1.5rem;
   color: #fff;
+}
+
+h3 {
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+main {
+  background-color: #f2f5f5;
+  min-height: calc(100vh - #{$headerHeight});
+  margin-left: $sidebarWidth;
+  padding: 0 4em;
+
+  .heading-wrapper {
+    padding: 3em 0 5em 0;
+  }
+
+  h2 {
+    text-align: center;
+  }
 }

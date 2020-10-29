@@ -8,15 +8,17 @@ body {
   font-family: "Lato", sans-serif;
 }
 
-h1 {
+h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
+}
+
+h1 {
   font-size: 1.5rem;
   color: #fff;
 }
 
 h3 {
   font-size: 2rem;
-  font-weight: 400;
 }
 
 main {
@@ -164,7 +166,9 @@ main h2 {
   border: #d9d9d9 1px solid;
   border-radius: 7px;
   background-color: #fff;
-  padding: 2.5em;
+  padding: 2.25em;
+  display: flex;
+  flex-direction: column;
 }
 .card--large {
   flex: 1;
@@ -175,6 +179,11 @@ main h2 {
 }
 .card__header {
   text-align: center;
+  margin-bottom: 1em;
+}
+.card__footer {
+  margin-top: auto;
+  font-size: 0.85rem;
 }
 
 .stats {
@@ -192,21 +201,28 @@ main h2 {
 }
 
 .desc-list {
-  font-size: 1.2rem;
+  font-size: 1rem;
   display: flex;
   flex-direction: column;
 }
 .desc-list__row {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
-  margin: 0.75em 0;
+  margin: 0.2em 0;
 }
 .desc-list__key {
   font-size: 1em;
 }
 .desc-list__value {
   font-size: 1.5em;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.additional-info {
+  font-size: 0.7em;
 }
 
 /*# sourceMappingURL=style.css.map */

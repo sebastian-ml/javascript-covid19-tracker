@@ -7,10 +7,12 @@ a {
 
 body {
   font-family: 'Lato', sans-serif;
+  color: #fff;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
+  color: inherit;
 }
 
 h1 {
@@ -23,7 +25,8 @@ h3 {
 }
 
 main {
-  background-color: #f2f5f5;
+  //background-color: #f2f5f5;
+  background-color: #3a3a3a;
   min-height: calc(100vh - #{$headerHeight});
   margin-left: $sidebarWidth;
   padding: 0 4em;

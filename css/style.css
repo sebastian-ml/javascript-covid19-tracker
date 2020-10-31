@@ -6,10 +6,12 @@ a {
 
 body {
   font-family: "Lato", sans-serif;
+  color: #fff;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
+  color: inherit;
 }
 
 h1 {
@@ -22,7 +24,7 @@ h3 {
 }
 
 main {
-  background-color: #f2f5f5;
+  background-color: #3a3a3a;
   min-height: calc(100vh - 55px);
   margin-left: 70px;
   padding: 0 4em;
@@ -77,10 +79,7 @@ main h2 {
   width: 70px;
   height: 100vh;
   transition: width 200ms linear;
-  background-color: #414141;
-  -moz-box-shadow: 1px 1px 1px 0 rgba(65, 65, 65, 0.8);
-  -webkit-box-shadow: 1px 1px 1px 0 rgba(65, 65, 65, 0.8);
-  box-shadow: 1px 1px 1px 0 rgba(65, 65, 65, 0.8);
+  background-color: #242424;
 }
 .aside .nav__text {
   transition: opacity 3s ease;
@@ -109,7 +108,7 @@ main h2 {
   flex-direction: row;
   height: 55px;
   color: #ffffff96;
-  background-color: #414141;
+  background-color: #242424;
   -moz-box-shadow: 0 1px 1px 0 rgba(65, 65, 65, 0.8);
   -webkit-box-shadow: 0 1px 1px 0 rgba(65, 65, 65, 0.8);
   box-shadow: 0 1px 1px 0 rgba(65, 65, 65, 0.8);
@@ -163,9 +162,8 @@ main h2 {
 
 .card {
   height: 600px;
-  border: #d9d9d9 1px solid;
   border-radius: 7px;
-  background-color: #fff;
+  background-color: #242424;
   padding: 2.25em;
   display: flex;
   flex-direction: column;
@@ -197,7 +195,7 @@ main h2 {
 
 .heading--large {
   font-size: 3rem;
-  color: #202020;
+  color: #ffffff;
 }
 
 .desc-list {

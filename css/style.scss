@@ -17,9 +17,6 @@
   height: 100vh;
   transition: width $mediumAnimation linear;
   background-color: $primaryColor;
-  -moz-box-shadow: 1px 1px 1px 0 rgba(65,65,65,0.8);
-  -webkit-box-shadow: 1px 1px 1px 0 rgba(65,65,65,0.8);
-  box-shadow: 1px 1px 1px 0 rgba(65,65,65,0.8);
 
   .nav__text {
     transition: opacity 3s ease;
@@ -110,9 +107,8 @@
 
 .card {
   height: 600px;
-  border: #d9d9d9 1px solid;
   border-radius: 7px;
-  background-color: #fff;
+  background-color: $primaryColor;
   padding: 2.25em;
   display: flex;
   flex-direction: column;
@@ -150,7 +146,7 @@
 .heading {
   &--large {
     font-size: 3rem;
-    color: #202020;
+    color: #ffffff;
   }
 }
 

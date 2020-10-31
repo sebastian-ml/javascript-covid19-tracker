@@ -20,8 +20,6 @@ function drawChart() {
     ]);
 
     const options = {
-        // title: 'My Daily Activities',
-        // pieHole: 0.3,
         legend: 'none',
         chartArea: {
             left: 0,
@@ -41,3 +39,34 @@ function drawChart() {
     const chart = new google.visualization.PieChart(document.getElementById('donut-chart'));
     chart.draw(data, options);
 }
+
+const allCasesUrl = 'https://corona-api.com/timeline';
+
+// Gather covid stats for the current day
+fetch(allCasesUrl)
+    .then((response) => response.json())
+    .then(function (respJSON) {
+        return respJSON.data[0];
+    })
+    .then((output) => updateDetails(output))
+
+/**
+ * Update details about covid
+ *
+ * @param currentInfo - Current corona statistics. Must be json.
+ */
+function updateDetails(currentInfo) {
+    const covidContainer = document.getElementsByClassName('desc-list')[0];
+
+    Array.from(covidContainer.children).forEach(function (item) {
+        const total = item.getElementsByClassName('desc-list__main-value')[0];
+        const today = item.getElementsByClassName('desc-list__second-value')[0];
+
+        total.textContent = currentInfo[item.id];
+        if (today) today.textContent = '+' + currentInfo[today.id]
+    })
+}
+
+
+
+

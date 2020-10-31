@@ -157,9 +157,20 @@
 
   &__row {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-between;
-    margin: .2em 0;
+    margin: .3em 0;
+
+    &:last-child .desc-list__value {
+      position: relative;
+
+      .desc-list__main-value {
+        position: absolute;
+        height: 100%;
+        display: flex;
+        align-items: center;
+      }
+    }
   }
 
   &__key {
@@ -172,8 +183,8 @@
     flex-direction: column;
     align-items: flex-end;
   }
-}
 
-.additional-info {
-  font-size: .7em;
+  &__second-value {
+    font-size: .7em;
+  }
 }

@@ -10,13 +10,20 @@ fetch(url)
 
 
 google.charts.load("current", {packages:["corechart"]});
-google.charts.setOnLoadCallback(drawChart);
-function drawChart() {
+
+/**
+ * Draw a chart with the given data. All arguments should be integers.
+ *
+ * @param active - Active covid cases.
+ * @param recovered - Currently recovered covid cases.
+ * @param deaths - People who died from covid.
+ */
+function drawChart(active, recovered, deaths) {
     const data = google.visualization.arrayToDataTable([
         ['Status', 'Cases'],
-        ['Active', 20],
-        ['Recovered', 10],
-        ['Deaths', 5],
+        ['Active', active],
+        ['Recovered', recovered],
+        ['Deaths', deaths],
     ]);
 
     const options = {
@@ -40,32 +47,51 @@ function drawChart() {
     chart.draw(data, options);
 }
 
+
 const allCasesUrl = 'https://corona-api.com/timeline';
 
-// Gather covid stats for the current day
+// Gather covid stats for the current day, update info on the site and draw a chart
 fetch(allCasesUrl)
     .then((response) => response.json())
     .then(function (respJSON) {
         return respJSON.data[0];
     })
-    .then((output) => updateDetails(output))
+    .then(function (covidData) {
+        updateDetails(covidData);
+        google.charts.setOnLoadCallback(drawChart(
+            covidData['active'],
+            covidData['recovered'],
+            covidData['deaths'],
+            ));
+    })
 
 /**
- * Update details about covid
+ * Update details about covid on the page.
  *
  * @param currentInfo - Current corona statistics. Must be json.
  */
 function updateDetails(currentInfo) {
     const covidContainer = document.getElementsByClassName('desc-list')[0];
+    document.getElementById('new_confirmed_important')
+        .textContent = '+ ' + currentInfo['confirmed'].toLocaleString('fr-FR');
 
     Array.from(covidContainer.children).forEach(function (item) {
         const total = item.getElementsByClassName('desc-list__main-value')[0];
         const today = item.getElementsByClassName('desc-list__second-value')[0];
 
-        total.textContent = currentInfo[item.id];
-        if (today) today.textContent = '+' + currentInfo[today.id]
+        // Update covid cases and add separator to the numbers
+        total.textContent = parseFloat(currentInfo[item.id]).toLocaleString('fr-FR');
+        if (today) today.textContent = '+ '
+            + parseFloat(currentInfo[today.id]).toLocaleString('fr-FR');
     })
+
+    // Update information about the time when the data was downloaded
+    const lastUpdate = new Date(currentInfo['updated_at']);
+    const lastUpdateContainer = document.getElementById('last-update');
+    lastUpdateContainer.dateTime = lastUpdate;
+    lastUpdateContainer.textContent = lastUpdate.toUTCString();
 }
+
 
 
 

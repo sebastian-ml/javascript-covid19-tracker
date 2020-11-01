@@ -53,14 +53,20 @@
 </aside>
 
 <main>
-    <header class="heading-wrapper">
-        <h2 class="heading heading--large">Global statistics</h2>
-    </header>
+    <!--    <header class="heading-wrapper">-->
+    <!--        <h2 class="heading heading&#45;&#45;large">Global statistics</h2>-->
+    <!--    </header>-->
     <section class="stats">
-        <div class="card card--large">
+        <article class="card card--1">
+            <header class="card__header">
+                <h3>New cases today:</h3>
+            </header>
+            <strong class="important-text important-text--large" id="new_confirmed_important">+ 123 456</strong>
+        </article>
+        <article class="card card--2">
             Lorem ipsum
-        </div>
-        <article class="card card--medium">
+        </article>
+        <article class="card card--3">
             <header class="card__header">
                 <h3>Details</h3>
             </header>
@@ -98,11 +104,11 @@
                     </div>
                 </dl>
                 <div id="donut-chart">
-                    <!-- Contains chart with covid cases -->
+                    <!-- Contains a chart with covid cases -->
                 </div>
             </div>
             <footer class="card__footer">
-                <p>Last updated at <time datetime="2020-02-03 20:00">2020-02-03, 20:00</time></p>
+                <p>Last updated at <time datetime="2020-02-03 20:00" id="last-update">2020-02-03, 20:00</time></p>
             </footer>
         </article>
     </section>

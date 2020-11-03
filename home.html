@@ -54,9 +54,6 @@
 </aside>
 
 <main>
-    <!--    <header class="heading-wrapper">-->
-    <!--        <h2 class="heading heading&#45;&#45;large">Global statistics</h2>-->
-    <!--    </header>-->
     <section class="stats">
         <article class="card card--1">
             <header class="card__header">
@@ -75,32 +72,45 @@
             </header>
             <div class="card__body">
                 <dl class="desc-list">
-                    <!-- dorob tooltip z info ze total to od poczatku okres -->
                     <div class="desc-list__row" id="confirmed">
                         <dt class="desc-list__key">Total</dt>
                         <dd class="desc-list__value">
-                            <p class="desc-list__main-value"></p>
-                            <p class="desc-list__second-value" id="new_confirmed"></p>
+                            <p class="desc-list__main-value">
+                                <span class="tooltip">Total from the beginning to now</span>
+                            </p>
+                            <p class="desc-list__second-value" id="new_confirmed">
+                                <span class="tooltip">New daily cases</span>
+                            </p>
                         </dd>
                     </div>
                     <div class="desc-list__row" id="recovered">
                         <dt class="desc-list__key">Recovered</dt>
                         <dd class="desc-list__value">
-                            <p class="desc-list__main-value"></p>
-                            <p class="desc-list__second-value" id="new_recovered"></p>
+                            <p class="desc-list__main-value">
+                                <span class="tooltip">Recovered from the beginning to now</span>
+                            </p>
+                            <p class="desc-list__second-value" id="new_recovered">
+                                <span class="tooltip">New daily recovered</span>
+                            </p>
                         </dd>
                     </div>
                     <div class="desc-list__row" id="deaths">
                         <dt class="desc-list__key">Deaths</dt>
                         <dd class="desc-list__value">
-                            <p class="desc-list__main-value"></p>
-                            <p class="desc-list__second-value" id="new_deaths"></p>
+                            <p class="desc-list__main-value">
+                                <span class="tooltip">Deaths from the beginning to now</span>
+                            </p>
+                            <p class="desc-list__second-value" id="new_deaths">
+                                <span class="tooltip">New daily deaths</span>
+                            </p>
                         </dd>
                     </div>
                     <div class="desc-list__row" id="active">
                         <dt class="desc-list__key">Active</dt>
                         <dd class="desc-list__value">
-                            <p class="desc-list__main-value"></p>
+                            <p class="desc-list__main-value">
+                                <span class="tooltip">Current number of affected people</span>
+                            </p>
                             <p><br></p>
                             <p><br></p>
                         </dd>

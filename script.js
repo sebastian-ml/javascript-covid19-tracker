@@ -92,8 +92,8 @@ function updateDetails(currentInfo) {
         const today = item.getElementsByClassName('desc-list__second-value')[0];
 
         // Update covid cases and add separator to the numbers
-        total.textContent = parseFloat(currentInfo[item.id]).toLocaleString('fr-FR');
-        if (today) today.textContent = '+ '
+        total.innerHTML += parseFloat(currentInfo[item.id]).toLocaleString('fr-FR');
+        if (today) today.innerHTML += '+ '
             + parseFloat(currentInfo[today.id]).toLocaleString('fr-FR');
     })
 

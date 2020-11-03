@@ -54,15 +54,27 @@ const allCasesUrl = 'https://corona-api.com/timeline';
 fetch(allCasesUrl)
     .then((response) => response.json())
     .then(function (respJSON) {
-        return respJSON.data[0];
+        return respJSON.data;
     })
     .then(function (covidData) {
-        updateDetails(covidData);
+        const dailyStats = covidData[0]
+        updateDetails(dailyStats);
         google.charts.setOnLoadCallback(drawChart(
-            covidData['active'],
-            covidData['recovered'],
-            covidData['deaths'],
+            dailyStats['active'],
+            dailyStats['recovered'],
+            dailyStats['deaths'],
             ));
+
+        // Save daily cases and dates into 2 arrays
+        const timeline = [];
+        const cases = [];
+        covidData.forEach(function (day) {
+            timeline.push(day['date']);
+            cases.push(day['new_confirmed']);
+        })
+
+        // Draw a line chart with daily cases
+        drawLineChart(timeline, cases);
     })
 
 /**
@@ -73,7 +85,7 @@ fetch(allCasesUrl)
 function updateDetails(currentInfo) {
     const covidContainer = document.getElementsByClassName('desc-list')[0];
     document.getElementById('new_confirmed_important')
-        .textContent = '+ ' + currentInfo['confirmed'].toLocaleString('fr-FR');
+        .textContent = '+ ' + currentInfo['new_confirmed'].toLocaleString('fr-FR');
 
     Array.from(covidContainer.children).forEach(function (item) {
         const total = item.getElementsByClassName('desc-list__main-value')[0];
@@ -91,6 +103,65 @@ function updateDetails(currentInfo) {
     lastUpdateContainer.dateTime = lastUpdate;
     lastUpdateContainer.textContent = lastUpdate.toUTCString();
 }
+
+/**
+ * Draw a line chart with the given data.
+ *
+ * @param xaxis - The array of x values.
+ * @param yaxis - The array of y values.
+ */
+function drawLineChart(xaxis, yaxis) {
+    const trace1 = {
+        x: xaxis.slice(1),
+        y: yaxis.slice(1),
+        mode: 'lines',
+        connectgaps: true,
+        line: {
+            color: 'rgba(227,27,27,0.82)',
+        }
+    };
+
+    const data = [trace1];
+
+    const layout = {
+        showlegend: false,
+        plot_bgcolor: '#242424',
+        paper_bgcolor: 'transparent',
+        font: {
+            family: 'Lato, sans-serif',
+        },
+        xaxis: {
+            title: {
+                text: 'Date',
+                font: {
+                    family: 'Lato, sans-serif',
+                    size: 15,
+                },
+            },
+            color: 'rgba(255,255,255,0.76)',
+        },
+        yaxis: {
+            title: {
+                text: 'New confirmed cases',
+                font: {
+                    family: 'Lato, sans-serif',
+                    size: 15,
+                }
+            },
+            color: 'rgba(255,255,255,0.76)',
+            zeroline: true,
+            zerolinecolor: 'rgba(210,210,210,0.56)',
+        },
+    };
+
+    const config = {responsive: true}
+
+    Plotly.newPlot('line-chart', data, layout, config);
+}
+
+
+
+
 
 
 

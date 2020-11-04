@@ -25,11 +25,10 @@ h3 {
 }
 
 main {
-  //background-color: #f2f5f5;
   background-color: #3a3a3a;
   min-height: calc(100vh - #{$headerHeight});
   margin-left: $sidebarWidth;
-  padding: 0 4em;
+  padding: 0 $gridGap;
 
   h2 {
     text-align: center;

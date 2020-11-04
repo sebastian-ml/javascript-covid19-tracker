@@ -124,6 +124,8 @@ function drawLineChart(xaxis, yaxis) {
     const data = [trace1];
 
     const layout = {
+        left: 0,
+        top: 0,
         showlegend: false,
         plot_bgcolor: '#242424',
         paper_bgcolor: 'transparent',
@@ -158,12 +160,3 @@ function drawLineChart(xaxis, yaxis) {
 
     Plotly.newPlot('line-chart', data, layout, config);
 }
-
-
-
-
-
-
-
-
-

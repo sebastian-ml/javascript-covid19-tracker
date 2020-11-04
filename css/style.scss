@@ -107,13 +107,13 @@
 
 .stats {
   display: grid;
-  padding-top: 20px;
+  padding-top: $gridGap;
   grid-template-rows: 200px auto;
-  grid-template-columns: minmax(700px, 1fr) 500px;
-  grid-gap: 20px;
+  grid-template-columns: repeat(3, minmax(calc(700px / 3), 1fr)) minmax(400px, 500px);
+  grid-gap: $gridGap;
   grid-template-areas:
-  '. card1'
-  'card2 card3';
+  'card1 card2 card3 card4'
+  'card5 card5 card5 card6';
 }
 
 .card {
@@ -123,16 +123,30 @@
   border-radius: 7px;
   background-color: $primaryColor;
 
-  &--1 {
+  &__1 {
     grid-area: card1;
   }
 
-  &--2 {
+  &__2 {
     grid-area: card2;
   }
 
-  &--3 {
+  &__3 {
     grid-area: card3;
+  }
+
+  &--4 {
+    grid-area: card4;
+  }
+
+  &--5 {
+    padding: 0;
+    // Padding for the chart
+    grid-area: card5;
+  }
+
+  &--6 {
+    grid-area: card6;
   }
 
   &__header {
@@ -189,8 +203,8 @@
 
     &:hover {
       .tooltip {
-        opacity: 1;
         visibility: visible;
+        opacity: 1;
       }
     }
   }
@@ -201,8 +215,8 @@
 
     &:hover {
       .tooltip {
-        opacity: 1;
         visibility: visible;
+        opacity: 1;
       }
     }
   }
@@ -228,6 +242,7 @@
   bottom: 100%;
   left: 50%;
   display: inline-block;
+  visibility: hidden;
   padding: .4em 0.9em;
   transition: opacity 150ms ease-in-out;
   transform: translateX(-50%);
@@ -237,7 +252,6 @@
   color: #000;
   border-radius: 5px;
   background-color: rgb(199, 199, 199);
-  visibility: hidden;
 
   &::after {
     position: absolute;

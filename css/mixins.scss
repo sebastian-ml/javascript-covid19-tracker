@@ -1,6 +1,6 @@
-@mixin flexCentered($justifyContent: center, $flexDirection: row) {
+@mixin flexBox($justifyContent: center, $alignItems: stretch, $flexDirection: row) {
   display: flex;
   justify-content: $justifyContent;
-  align-items: center;
+  align-items: $alignItems;
   flex-direction: $flexDirection;
 }

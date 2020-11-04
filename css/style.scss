@@ -45,7 +45,7 @@
 }
 
 .header {
-  @include flexCentered;
+  @include flexBox($alignItems: center);
   height: $headerHeight;
   color: $primaryFontColor;
   background-color: $primaryColor;
@@ -83,8 +83,7 @@
   }
 
   &__link {
-    display: flex;
-    align-items: center;
+    @include flexBox($alignItems: center, $justifyContent: flex-start);
     height: 100%;
     transition: all $shortAnimation ease-in-out;
     color: $primaryFontColor;
@@ -102,7 +101,7 @@
 .container {
   width: 1700px;
   max-width: 90%;
-  @include flexCentered(space-between);
+  @include flexBox($justifyContent: space-between, $alignItems: center);
 }
 
 .stats {
@@ -117,8 +116,7 @@
 }
 
 .card {
-  display: flex;
-  flex-direction: column;
+  @include flexBox($flexDirection: column, $justifyContent: flex-start);
   padding: 2.25em;
   border-radius: 7px;
   background-color: $primaryColor;
@@ -164,13 +162,10 @@
 
 .desc-list {
   font-size: 1rem;
-  display: flex;
-  flex-direction: column;
+  @include flexBox($flexDirection: column, $justifyContent: flex-start);
 
   &__row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    @include flexBox($alignItems: center, $justifyContent: space-between);
     margin: .3em 0;
 
     // Last row contains info without daily statistics
@@ -180,8 +175,7 @@
 
       .desc-list__main-value {
         position: absolute;
-        display: flex;
-        align-items: center;
+        @include flexBox($alignItems: center, $justifyContent: flex-start);
         height: 100%;
       }
     }
@@ -193,9 +187,7 @@
 
   &__value {
     font-size: 1.5em;
-    display: flex;
-    align-items: flex-end;
-    flex-direction: column;
+    @include flexBox($alignItems: flex-end, $flexDirection: column, $justifyContent: flex-start);
   }
 
   &__main-value {

@@ -136,7 +136,9 @@ main h2 {
 }
 .nav__link {
   display: flex;
+  justify-content: flex-start;
   align-items: center;
+  flex-direction: row;
   height: 100%;
   transition: all 100ms ease-in-out;
   color: #ffffff96;
@@ -168,6 +170,8 @@ main h2 {
 
 .card {
   display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
   flex-direction: column;
   padding: 2.25em;
   border-radius: 7px;
@@ -206,12 +210,15 @@ main h2 {
 .desc-list {
   font-size: 1rem;
   display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
   flex-direction: column;
 }
 .desc-list__row {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
   margin: 0.3em 0;
 }
 .desc-list__row:last-child .desc-list__value {
@@ -220,7 +227,9 @@ main h2 {
 .desc-list__row:last-child .desc-list__value .desc-list__main-value {
   position: absolute;
   display: flex;
+  justify-content: flex-start;
   align-items: center;
+  flex-direction: row;
   height: 100%;
 }
 .desc-list__key {
@@ -229,6 +238,7 @@ main h2 {
 .desc-list__value {
   font-size: 1.5em;
   display: flex;
+  justify-content: flex-start;
   align-items: flex-end;
   flex-direction: column;
 }

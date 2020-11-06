@@ -71,6 +71,7 @@ main h2 {
 
 .aside {
   position: fixed;
+  z-index: 100;
   top: 0;
   left: 0;
   width: 70px;
@@ -78,17 +79,15 @@ main h2 {
   transition: width 200ms linear;
   background-color: #242424;
 }
-.aside .nav__text {
-  transition: opacity 3s ease;
-}
 .aside:hover {
   overflow: hidden;
   width: 200px;
 }
-.aside:hover .nav {
+.aside:hover .side-nav {
   width: 200px;
+  border-right: 1px solid #363636;
 }
-.aside:hover .nav__text {
+.aside:hover .side-nav__text {
   display: inline;
 }
 .aside:hover .icon-open-arrows {
@@ -111,25 +110,45 @@ main h2 {
   box-shadow: 0 1px 1px 0 rgba(65, 65, 65, 0.8);
 }
 
+.side-nav {
+  height: 100%;
+  background-color: inherit;
+}
+.side-nav__list {
+  list-style: none;
+  width: 100%;
+}
+.side-nav__list-item {
+  height: 70px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: colu;
+}
+.side-nav__link {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  color: #ffffff96;
+  height: 100%;
+  width: 100%;
+  transition: all 100ms ease-in-out;
+}
+.side-nav__link:hover {
+  color: #fff;
+  background-color: #323232;
+}
+.side-nav__text {
+  display: none;
+}
+
 .nav {
   height: 100%;
 }
 .nav__list {
   display: flex;
   list-style: none;
-}
-.nav__list--vertical {
-  flex-direction: column;
-}
-.nav__list--vertical .nav__list-item {
-  width: 100%;
-  height: 70px;
-  margin-left: 0;
-  transition: all 100ms ease-in-out;
-  color: #ffffff96;
-}
-.nav__list--vertical .nav__list-item:hover {
-  background-color: #323232;
 }
 .nav__list-item {
   margin-left: 1em;
@@ -145,9 +164,6 @@ main h2 {
 }
 .nav__link:hover {
   color: #fff;
-}
-.nav__text {
-  display: none;
 }
 
 .container {

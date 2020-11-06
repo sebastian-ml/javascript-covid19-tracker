@@ -11,6 +11,7 @@
 
 .aside {
   position: fixed;
+  z-index: 100;
   top: 0;
   left: 0;
   width: $sidebarWidth;
@@ -18,20 +19,17 @@
   transition: width $mediumAnimation linear;
   background-color: $primaryColor;
 
-  .nav__text {
-    transition: opacity 3s ease;
-  }
-
   &:hover {
     overflow: hidden;
     width: 200px;
 
-    .nav {
+    .side-nav {
       width: 200px; // Same as parent div
-    }
+      border-right: 1px solid #363636;
 
-    .nav__text {
-      display: inline;
+      &__text {
+        display: inline;
+      }
     }
 
     .icon-open-arrows {
@@ -54,28 +52,44 @@
   box-shadow: 0 1px 1px 0 rgba(65,65,65,0.8);
 }
 
+.side-nav {
+  height: 100%;
+  background-color: inherit;
+
+  &__list {
+    list-style: none;
+    width: 100%;
+
+    &-item {
+      height: $sidebarWidth;
+      @include flexBox($alignItems: center, $justifyContent: flex-start, $flexDirection: colu)
+    }
+  }
+
+  &__link {
+    @include flexBox($alignItems: center, $justifyContent: flex-start);
+    color: $primaryFontColor;
+    height: 100%;
+    width: 100%;
+    transition: all $shortAnimation ease-in-out;
+
+    &:hover {
+      color: #fff;
+      background-color: $primaryColorHover;
+    }
+  }
+
+  &__text {
+    display: none;
+  }
+}
+
 .nav {
   height: 100%;
 
   &__list {
     display: flex;
     list-style: none;
-
-    &--vertical {
-      flex-direction: column;
-
-      .nav__list-item {
-        width: 100%;
-        height: $sidebarWidth;
-        margin-left: 0;
-        transition: all $shortAnimation ease-in-out;
-        color: $primaryFontColor;
-
-        &:hover {
-          background-color: $primaryColorHover;
-        }
-      }
-    }
 
     &-item {
       margin-left: 1em;
@@ -91,10 +105,6 @@
     &:hover {
       color: #fff;
     }
-  }
-
-  &__text {
-    display: none;
   }
 }
 

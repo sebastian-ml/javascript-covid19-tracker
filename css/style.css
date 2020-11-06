@@ -315,4 +315,41 @@ main h2 {
   border-color: #c7c7c7 transparent transparent transparent;
 }
 
+.hamburger {
+  height: 23px;
+  width: 30px;
+  background-color: #242424;
+  border: transparent;
+}
+.hamburger__inner {
+  display: block;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  flex-direction: column;
+}
+
+.line-horizontal {
+  background-color: #ffffff96;
+  display: block;
+  height: 3px;
+  width: 100%;
+}
+
+.x-sign {
+  width: 100%;
+  height: 3px;
+  background-color: #ffffff;
+  transform: rotate(45deg);
+  transform-origin: top left;
+}
+.x-sign::after {
+  background-color: inherit;
+  content: "";
+  display: block;
+  height: 3px;
+  transform: rotate(90deg);
+}
+
 /*# sourceMappingURL=style.css.map */

@@ -27,7 +27,7 @@
       width: 200px; // Same as parent div
       border-right: 1px solid #363636;
 
-      &__text {
+      .vertical-list__text {
         display: inline;
       }
     }
@@ -50,20 +50,17 @@
   -moz-box-shadow: 0 1px 1px 0 rgba(65,65,65,0.8);
   -webkit-box-shadow: 0 1px 1px 0 rgba(65,65,65,0.8);
   box-shadow: 0 1px 1px 0 rgba(65,65,65,0.8);
+  position: relative;
 }
 
-.side-nav {
-  height: 100%;
-  background-color: inherit;
+.vertical-list {
+  list-style: none;
+  width: 100%;
+  background-color: $primaryColor;
 
-  &__list {
-    list-style: none;
-    width: 100%;
-
-    &-item {
-      height: $sidebarWidth;
-      @include flexBox($alignItems: center, $justifyContent: flex-start, $flexDirection: colu)
-    }
+  &__item {
+    height: $sidebarWidth;
+    @include flexBox($alignItems: center, $justifyContent: flex-start)
   }
 
   &__link {
@@ -86,6 +83,18 @@
 
 .nav {
   height: 100%;
+
+  &--vertical {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 100%;
+
+    // Text inside the anchor should be centered only in main navbar for mobile
+    .vertical-list__link {
+      justify-content: center;
+    }
+  }
 
   &__list {
     display: flex;
@@ -110,7 +119,7 @@
 
 .container {
   width: 1700px;
-  max-width: 90%;
+  max-width: calc(100% - 2 * #{$sidebarWidth});
   @include flexBox($justifyContent: space-between, $alignItems: center);
 }
 
@@ -302,4 +311,3 @@
     transform: rotate(90deg);
   }
 }
-

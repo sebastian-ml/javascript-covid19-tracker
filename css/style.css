@@ -82,10 +82,10 @@ main h2 {
 .aside:hover {
   overflow: hidden;
   width: 200px;
+  border-right: 1px solid #363636;
 }
 .aside:hover .side-nav {
   width: 200px;
-  border-right: 1px solid #363636;
 }
 .aside:hover .side-nav .vertical-list__text {
   display: inline;
@@ -142,16 +142,7 @@ main h2 {
 }
 
 .nav {
-  height: 100%;
-}
-.nav--vertical {
-  position: absolute;
-  width: 100%;
-  left: 0;
-  top: 100%;
-}
-.nav--vertical .vertical-list__link {
-  justify-content: center;
+  display: none;
 }
 .nav__list {
   display: flex;
@@ -171,6 +162,24 @@ main h2 {
 }
 .nav__link:hover {
   color: #fff;
+}
+
+.nav-mobile {
+  position: absolute;
+  width: calc(100% - 70px);
+  left: 70px;
+  top: 100%;
+}
+.nav-mobile .vertical-list {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 500ms linear;
+}
+.nav-mobile .vertical-list--active {
+  max-height: 300px;
+}
+.nav-mobile .vertical-list__link {
+  justify-content: center;
 }
 
 .container {
@@ -302,7 +311,7 @@ main h2 {
   display: inline-block;
   visibility: hidden;
   padding: 0.4em 0.9em;
-  transition: opacity 150ms ease-in-out;
+  transition: opacity 100ms ease-in-out;
   transform: translateX(-50%);
   text-align: center;
   white-space: nowrap;
@@ -327,6 +336,7 @@ main h2 {
   width: 30px;
   background-color: #242424;
   border: transparent;
+  cursor: pointer;
 }
 .hamburger__inner {
   display: block;
@@ -336,22 +346,38 @@ main h2 {
   align-items: stretch;
   flex-direction: column;
 }
-
-.line-horizontal {
+.hamburger:hover .hamburger__inactive {
+  background-color: #fff;
+}
+.hamburger__inactive {
   background-color: #ffffff96;
   display: block;
   height: 3px;
   width: 100%;
+  transition: all 100ms ease-in-out;
 }
-
-.x-sign {
-  width: 100%;
+.hamburger__inactive::before {
+  background-color: inherit;
+  content: "";
+  display: block;
   height: 3px;
+  width: 100%;
+  transform: translateY(10px);
+}
+.hamburger__inactive::after {
+  background-color: inherit;
+  content: "";
+  display: block;
+  height: 3px;
+  width: 100%;
+  transform: translateY(17px);
+}
+.hamburger__active {
   background-color: #ffffff;
   transform: rotate(45deg);
   transform-origin: top left;
 }
-.x-sign::after {
+.hamburger__active::after {
   background-color: inherit;
   content: "";
   display: block;

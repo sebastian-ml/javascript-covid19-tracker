@@ -22,10 +22,10 @@
   &:hover {
     overflow: hidden;
     width: 200px;
+    border-right: 1px solid #363636;
 
     .side-nav {
       width: 200px; // Same as parent div
-      border-right: 1px solid #363636;
 
       .vertical-list__text {
         display: inline;
@@ -82,19 +82,7 @@
 }
 
 .nav {
-  height: 100%;
-
-  &--vertical {
-    position: absolute;
-    width: 100%;
-    left: 0;
-    top: 100%;
-
-    // Text inside the anchor should be centered only in main navbar for mobile
-    .vertical-list__link {
-      justify-content: center;
-    }
-  }
+  display: none;
 
   &__list {
     display: flex;
@@ -114,6 +102,28 @@
     &:hover {
       color: #fff;
     }
+  }
+}
+
+.nav-mobile {
+  position: absolute;
+  width: calc(100% - #{$sidebarWidth});
+  left: $sidebarWidth;
+  top: 100%;
+
+  .vertical-list {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height $longAnimation linear;
+
+    &--active {
+      max-height: 300px; // Must be higher than the exact height of the list
+    }
+  }
+
+  // Text inside the anchor should be centered only in main navbar for mobile
+  .vertical-list__link {
+    justify-content: center;
   }
 }
 
@@ -255,7 +265,7 @@
   display: inline-block;
   visibility: hidden;
   padding: .4em 0.9em;
-  transition: opacity 150ms ease-in-out;
+  transition: opacity $shortAnimation ease-in-out;
   transform: translateX(-50%);
   text-align: center;
   white-space: nowrap;
@@ -281,33 +291,52 @@
   width: 30px;
   background-color: $primaryColor;
   border: transparent;
+  cursor: pointer;
 
   &__inner {
     display: block;
     height: 100%;
     @include flexBox($justifyContent: space-between, $flexDirection: column);
   }
-}
 
-.line-horizontal {
-  background-color: $primaryFontColor;
-  display: block;
-  height: 3px;
-  width: 100%;
-}
+  &:hover .hamburger__inactive {
+    background-color: #fff;
+  }
 
-.x-sign {
-  width: 100%;
-  height: 3px;
-  background-color: #ffffff;
-  transform: rotate(45deg);
-  transform-origin: top left;
+  &__inactive {
+      background-color: $primaryFontColor;
+      display: block;
+      height: 3px;
+      width: 100%;
+      transition: all $shortAnimation ease-in-out;
+    &::before {
+      background-color: inherit;
+      content: '';
+      display: block;
+      height: 3px;
+      width: 100%;
+      transform: translateY(10px);
+    }
+    &::after {
+      background-color: inherit;
+      content: '';
+      display: block;
+      height: 3px;
+      width: 100%;
+      transform: translateY(17px);
+    }
+  }
 
-  &::after {
-    background-color: inherit;
-    content: '';
-    display: block;
-    height: 3px;
-    transform: rotate(90deg);
+  &__active {
+    background-color: #ffffff;
+    transform: rotate(45deg);
+    transform-origin: top left;
+    &::after {
+      background-color: inherit;
+      content: '';
+      display: block;
+      height: 3px;
+      transform: rotate(90deg);
+    }
   }
 }

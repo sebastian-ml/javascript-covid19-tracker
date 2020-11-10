@@ -110,7 +110,10 @@ main h2 {
   -moz-box-shadow: 0 1px 1px 0 rgba(65, 65, 65, 0.8);
   -webkit-box-shadow: 0 1px 1px 0 rgba(65, 65, 65, 0.8);
   box-shadow: 0 1px 1px 0 rgba(65, 65, 65, 0.8);
-  position: relative;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 100;
 }
 
 .vertical-list {
@@ -176,6 +179,7 @@ main h2 {
   max-height: 0;
   overflow: hidden;
   transition: max-height 500ms linear;
+  border-bottom: 1px solid #363636;
 }
 .nav-mobile .vertical-list--active {
   max-height: 300px;
@@ -400,9 +404,9 @@ main h2 {
   border: 1px solid #fff;
   cursor: pointer;
   position: relative;
-  align-self: center;
   margin-top: auto;
   margin-bottom: 30px;
+  margin-left: calc((70px - 40px) / 2);
 }
 .theme-btn::before {
   content: "";

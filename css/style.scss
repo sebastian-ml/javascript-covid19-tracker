@@ -138,7 +138,6 @@
 
 .stats {
   display: grid;
-  padding-top: $gridGap;
   grid-auto-rows: auto;
   grid-template-columns: 1fr;
   grid-gap: $gridGap;
@@ -153,8 +152,9 @@
 
 .card {
   @include flexBox($flexDirection: column, $justifyContent: flex-start);
-  padding: 2.25em;
+  padding: 2.15em;
   border-radius: 7px;
+  font-size: .95rem;
   background-color: $primaryColor;
 
   &__1 {
@@ -184,7 +184,7 @@
   }
 
   &__footer {
-    font-size: .75rem;
+    font-size: .75em;
     margin-top: auto;
     text-align: center;
     color: #a9a9a9;
@@ -192,7 +192,7 @@
 }
 
 .desc-list {
-  font-size: 1rem;
+  font-size: 1em;
   @include flexBox($flexDirection: column, $justifyContent: flex-start);
 
   &__row {
@@ -382,6 +382,12 @@
     font-size: .7em;
     white-space: nowrap;
   }
+}
+
+.footer {
+  height: $headerHeight;
+  background-color: $primaryColor;
+  margin-left: $sidebarWidth;
 }
 
 @import 'media-query';

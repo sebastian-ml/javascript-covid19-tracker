@@ -7,6 +7,7 @@ a {
 body {
   font-family: "Lato", sans-serif;
   color: #fff;
+  background-color: #3a3a3a;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -20,14 +21,13 @@ h1 {
 }
 
 h3 {
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 main {
-  background-color: #3a3a3a;
-  min-height: calc(100vh - 55px);
   margin-left: 70px;
-  padding: 0 20px;
+  padding: 20px;
+  min-height: calc(100vh - 2 * 55px);
 }
 main h2 {
   text-align: center;
@@ -199,7 +199,6 @@ main h2 {
 
 .stats {
   display: grid;
-  padding-top: 20px;
   grid-auto-rows: auto;
   grid-template-columns: 1fr;
   grid-gap: 20px;
@@ -211,8 +210,9 @@ main h2 {
   justify-content: flex-start;
   align-items: stretch;
   flex-direction: column;
-  padding: 2.25em;
+  padding: 2.15em;
   border-radius: 7px;
+  font-size: 0.95rem;
   background-color: #242424;
 }
 .card__1 {
@@ -239,14 +239,14 @@ main h2 {
   text-align: center;
 }
 .card__footer {
-  font-size: 0.75rem;
+  font-size: 0.75em;
   margin-top: auto;
   text-align: center;
   color: #a9a9a9;
 }
 
 .desc-list {
-  font-size: 1rem;
+  font-size: 1em;
   display: flex;
   justify-content: flex-start;
   align-items: stretch;
@@ -428,6 +428,12 @@ main h2 {
   color: #fff;
   font-size: 0.7em;
   white-space: nowrap;
+}
+
+.footer {
+  height: 55px;
+  background-color: #242424;
+  margin-left: 70px;
 }
 
 /*Small devices (landscape phones, 576px and up)*/

@@ -8,6 +8,7 @@ a {
 body {
   font-family: 'Lato', sans-serif;
   color: #fff;
+  background-color: $primaryBgColor;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -21,14 +22,13 @@ h1 {
 }
 
 h3 {
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 main {
-  background-color: #3a3a3a;
-  min-height: calc(100vh - #{$headerHeight});
   margin-left: $sidebarWidth;
-  padding: 0 $gridGap;
+  padding: $gridGap;
+  min-height: calc(100vh - 2 * #{$headerHeight});
 
   h2 {
     text-align: center;

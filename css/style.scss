@@ -1,7 +1,4 @@
-@import 'mixins';
-@import 'clear-tags';
-@import 'variables';
-@import 'fontello';
+@import 'mixins', 'clear-tags', 'variables', 'fontello', 'media-query';
 
 *, *:after, *:before {
   box-sizing: border-box;

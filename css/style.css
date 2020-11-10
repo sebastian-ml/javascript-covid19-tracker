@@ -63,6 +63,27 @@ main h2 {
   justify-content: center;
 }
 
+/*Small devices (landscape phones, 576px and up)*/
+/*Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+  .nav-mobile {
+    display: none;
+  }
+
+  .nav-mobile .vertical-list {
+    max-height: 0;
+  }
+
+  .nav {
+    display: block;
+  }
+
+  .hamburger {
+    display: none;
+  }
+}
+/*Large devices (desktops, 992px and up)*/
+/*Extra large devices (large desktops, 1200px and up)*/
 *, *:after, *:before {
   box-sizing: border-box;
   margin: 0;

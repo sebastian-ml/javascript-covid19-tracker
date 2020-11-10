@@ -1,4 +1,4 @@
-@import 'mixins', 'clear-tags', 'variables', 'fontello', 'media-query';
+@import 'mixins', 'clear-tags', 'variables', 'fontello';
 
 *, *:after, *:before {
   box-sizing: border-box;
@@ -133,12 +133,16 @@
 .stats {
   display: grid;
   padding-top: $gridGap;
-  grid-template-rows: 200px auto;
-  grid-template-columns: repeat(3, minmax(calc(700px / 3), 1fr)) minmax(400px, 500px);
+  grid-auto-rows: auto;
+  grid-template-columns: 1fr;
   grid-gap: $gridGap;
   grid-template-areas:
-  'card1 card2 card3 card4'
-  'card5 card5 card5 card6';
+  'card4'
+  'card1'
+  'card2'
+  'card3'
+  'card5'
+  'card6';
 }
 
 .card {
@@ -337,3 +341,10 @@
     }
   }
 }
+
+#donut-chart {
+  display: flex;
+  justify-content: center;
+}
+
+@import 'media-query';

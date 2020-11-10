@@ -408,6 +408,10 @@ main h2 {
   margin-bottom: 30px;
   margin-left: calc((70px - 40px) / 2);
 }
+.theme-btn:hover:before {
+  background-color: #242424;
+  right: calc(40px - 14px - 2px - 2px);
+}
 .theme-btn::before {
   content: "";
   position: absolute;
@@ -417,6 +421,7 @@ main h2 {
   width: 14px;
   background-color: #fff;
   border-radius: 50%;
+  transition: all 200ms linear;
 }
 .theme-btn::after {
   position: absolute;

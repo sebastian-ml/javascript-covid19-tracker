@@ -360,6 +360,12 @@
   margin-bottom: 30px;
   margin-left: calc((#{$sidebarWidth} - 40px) / 2);
 
+  &:hover:before {
+    background-color: $primaryColor;
+    // width - circle size - right - left
+    right: calc(40px - 14px - 2px - 2px);
+  }
+
   &::before {
     content: '';
     position: absolute;
@@ -369,6 +375,7 @@
     width: 14px;
     background-color: #fff;
     border-radius: 50%;
+    transition: all $mediumAnimation linear;
   }
 
   &::after {

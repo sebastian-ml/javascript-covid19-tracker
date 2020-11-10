@@ -70,6 +70,8 @@ main h2 {
 }
 
 .aside {
+  display: flex;
+  flex-direction: column;
   position: fixed;
   z-index: 100;
   top: 0;
@@ -388,6 +390,40 @@ main h2 {
 #donut-chart {
   display: flex;
   justify-content: center;
+}
+
+.theme-btn {
+  width: 40px;
+  border-radius: 28px;
+  background-color: #242424;
+  height: 20px;
+  border: 1px solid #fff;
+  cursor: pointer;
+  position: relative;
+  align-self: center;
+  margin-top: auto;
+  margin-bottom: 30px;
+}
+.theme-btn::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  height: 14px;
+  width: 14px;
+  background-color: #fff;
+  border-radius: 50%;
+}
+.theme-btn::after {
+  position: absolute;
+  top: 110%;
+  width: 100%;
+  text-align: center;
+  left: 0;
+  content: "DARK";
+  color: #fff;
+  font-size: 0.7em;
+  white-space: nowrap;
 }
 
 /*Small devices (landscape phones, 576px and up)*/

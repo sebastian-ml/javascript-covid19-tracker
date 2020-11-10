@@ -7,6 +7,8 @@
 }
 
 .aside {
+  display: flex;
+  flex-direction: column;
   position: fixed;
   z-index: 100;
   top: 0;
@@ -154,25 +156,20 @@
   &__1 {
     grid-area: card1;
   }
-
   &__2 {
     grid-area: card2;
   }
-
   &__3 {
     grid-area: card3;
   }
-
   &--4 {
     grid-area: card4;
   }
-
   &--5 {
     padding: 0;
     // Padding for the chart
     grid-area: card5;
   }
-
   &--6 {
     grid-area: card6;
   }
@@ -345,6 +342,42 @@
 #donut-chart {
   display: flex;
   justify-content: center;
+}
+
+.theme-btn {
+  width: 40px;
+  border-radius: 28px;
+  background-color: $primaryColor;
+  height: 20px;
+  border: 1px solid #fff;
+  cursor: pointer;
+  position: relative;
+  align-self: center;
+  margin-top: auto;
+  margin-bottom: 30px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    height: 14px;
+    width: 14px;
+    background-color: #fff;
+    border-radius: 50%;
+  }
+
+  &::after {
+    position: absolute;
+    top: 110%;
+    width: 100%;
+    text-align: center;
+    left: 0;
+    content: 'DARK';
+    color: #fff;
+    font-size: .7em;
+    white-space: nowrap;
+  }
 }
 
 @import 'media-query';

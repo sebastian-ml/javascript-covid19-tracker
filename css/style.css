@@ -360,7 +360,7 @@ main h2 {
   display: block;
   height: 3px;
   width: 100%;
-  transition: all 100ms ease-in-out;
+  transition: background-color 100ms ease-in-out;
 }
 .hamburger__inactive::before {
   background-color: inherit;
@@ -396,7 +396,12 @@ main h2 {
   justify-content: center;
 }
 
+.btn-label {
+  margin-top: auto;
+}
+
 .theme-btn {
+  appearance: none;
   width: 40px;
   border-radius: 28px;
   background-color: #242424;
@@ -404,13 +409,20 @@ main h2 {
   border: 1px solid #fff;
   cursor: pointer;
   position: relative;
-  margin-top: auto;
   margin-bottom: 30px;
-  margin-left: calc((70px - 40px) / 2);
+  margin-left: 15px;
+  transition: all 200ms linear;
 }
-.theme-btn:hover:before {
-  background-color: #242424;
-  right: calc(40px - 14px - 2px - 2px);
+.theme-btn:checked {
+  background-color: #fff;
+  border-color: #000;
+}
+.theme-btn:checked:before {
+  right: 22px;
+  background-color: #000;
+}
+.theme-btn:checked:after {
+  content: "LIGHT";
 }
 .theme-btn::before {
   content: "";

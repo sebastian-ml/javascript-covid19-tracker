@@ -310,7 +310,7 @@
       display: block;
       height: 3px;
       width: 100%;
-      transition: all $shortAnimation ease-in-out;
+      transition: background-color $shortAnimation ease-in-out;
     &::before {
       background-color: inherit;
       content: '';
@@ -348,7 +348,12 @@
   justify-content: center;
 }
 
+.btn-label {
+  margin-top: auto;
+}
+
 .theme-btn {
+  appearance: none;
   width: 40px;
   border-radius: 28px;
   background-color: $primaryColor;
@@ -356,14 +361,21 @@
   border: 1px solid #fff;
   cursor: pointer;
   position: relative;
-  margin-top: auto;
   margin-bottom: 30px;
-  margin-left: calc((#{$sidebarWidth} - 40px) / 2);
+  margin-left: ($sidebarWidth - 40px) / 2;
+  transition: all $mediumAnimation linear;
 
-  &:hover:before {
-    background-color: $primaryColor;
-    // width - circle size - right - left
-    right: calc(40px - 14px - 2px - 2px);
+  &:checked {
+    background-color: #fff;
+    border-color: #000;
+
+    &:before {
+      right: 40px - 14px - 2 * 2px;
+      background-color: #000;
+    }
+    &:after {
+      content: 'LIGHT';
+    }
   }
 
   &::before {

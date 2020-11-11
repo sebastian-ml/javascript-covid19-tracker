@@ -18,34 +18,37 @@ google.charts.load("current", {packages:["corechart"]});
  * @param recovered - Currently recovered covid cases.
  * @param deaths - People who died from covid.
  */
-function drawChart(active, recovered, deaths) {
-    const data = google.visualization.arrayToDataTable([
-        ['Status', 'Cases'],
-        ['Active', active],
-        ['Recovered', recovered],
-        ['Deaths', deaths],
-    ]);
+function chart(active, recovered, deaths) {
+    return function drawChart() {
+        const data = google.visualization.arrayToDataTable([
+            ['Status', 'Cases'],
+            ['Active', active],
+            ['Recovered', recovered],
+            ['Deaths', deaths],
+        ]);
 
-    const options = {
-        legend: 'none',
-        chartArea: {
-            left: 0,
-            top: 0,
-            width: "100%",
-            height: "100%",
-        },
-        colors: ['#f7cc20', '#8fb447', '#bf3c39'],
-        backgroundColor: { fill:'transparent' },
-        fontSize: 15,
-        is3D: true,
-        pieSliceTextStyle: {
-            color: 'black'
-        }
-    };
+        const options = {
+            legend: 'none',
+            chartArea: {
+                left: 0,
+                top: 0,
+                width: "100%",
+                height: "100%",
+            },
+            colors: ['#f7cc20', '#8fb447', '#bf3c39'],
+            backgroundColor: { fill:'transparent' },
+            fontSize: 15,
+            is3D: true,
+            pieSliceTextStyle: {
+                color: 'black'
+            }
+        };
 
-    const chart = new google.visualization.PieChart(document.getElementById('donut-chart'));
-    chart.draw(data, options);
+        const chart = new google.visualization.PieChart(document.getElementById('donut-chart'));
+        chart.draw(data, options);
+    }
 }
+
 
 
 const allCasesUrl = 'https://corona-api.com/timeline';
@@ -59,12 +62,15 @@ fetch(allCasesUrl)
     .then(function (covidData) {
         const dailyStats = covidData[0]
         updateDetails(dailyStats);
-        google.charts.setOnLoadCallback(drawChart(
+        google.charts.setOnLoadCallback(chart(
             dailyStats['active'],
             dailyStats['recovered'],
             dailyStats['deaths'],
             ));
 
+        return covidData;
+    })
+    .then((covidData) => {
         // Save daily cases and dates into 2 arrays
         const timeline = [];
         const cases = [];

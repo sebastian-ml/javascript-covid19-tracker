@@ -6,7 +6,8 @@
 }
 
 .icon-open-arrows {
-  @include flexBox($alignItems: center);
+  @include prefix(display, flex);
+  @include flexCentered;
   height: $headerHeight;
 
   .icon-right-open {

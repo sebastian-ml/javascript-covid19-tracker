@@ -7,7 +7,7 @@
 }
 
 .aside {
-  display: flex;
+  @include prefix(display, flex);
   flex-direction: column;
   position: fixed;
   z-index: 100;
@@ -32,7 +32,7 @@
     }
 
     .icon-open-arrows {
-      transform: rotate(-180deg);
+      @include prefix(transform, rotate(-180deg), webkit ms);
 
       .icon-right-open {
         color: #fff;
@@ -42,12 +42,11 @@
 }
 
 .header {
-  @include flexBox($alignItems: center);
+  @include flexCentered;
+  @include prefix(display, flex);
   height: $headerHeight;
   color: $primaryFontColor;
   background-color: $primaryColor;
-  -moz-box-shadow: 0 1px 1px 0 rgba(65,65,65,0.8);
-  -webkit-box-shadow: 0 1px 1px 0 rgba(65,65,65,0.8);
   box-shadow: 0 1px 1px 0 rgba(65,65,65,0.8);
   position: sticky;
   top: 0;
@@ -62,11 +61,13 @@
 
   &__item {
     height: $sidebarWidth;
-    @include flexBox($alignItems: center, $justifyContent: flex-start)
+    @include prefix(display, flex);
+    align-items: center;
   }
 
   &__link {
-    @include flexBox($alignItems: center, $justifyContent: flex-start);
+    @include prefix(display, flex);
+    align-items: center;
     color: $primaryFontColor;
     height: 100%;
     width: 100%;
@@ -87,7 +88,7 @@
   display: none;
 
   &__list {
-    display: flex;
+    @include prefix(display, flex);
     list-style: none;
 
     &-item {
@@ -96,7 +97,8 @@
   }
 
   &__link {
-    @include flexBox($alignItems: center, $justifyContent: flex-start);
+    @include prefix(display, flex);
+    align-items: center;
     height: 100%;
     transition: all $shortAnimation ease-in-out;
     color: $primaryFontColor;
@@ -133,11 +135,13 @@
 .container {
   width: 1700px;
   max-width: calc(100% - 2 * #{$sidebarWidth});
-  @include flexBox($justifyContent: space-between, $alignItems: center);
+  @include prefix(display, flex);
+  justify-content: space-between;
+  align-items: center;
 }
 
 .stats {
-  display: grid;
+  @include prefix(display, grid, ms);
   grid-auto-rows: auto;
   grid-template-columns: 1fr;
   grid-gap: $gridGap;
@@ -151,7 +155,8 @@
 }
 
 .card {
-  @include flexBox($flexDirection: column, $justifyContent: flex-start);
+  @include prefix(display, flex);
+  flex-direction: column;
   padding: 2.15em;
   border-radius: 7px;
   font-size: .95rem;
@@ -193,10 +198,13 @@
 
 .desc-list {
   font-size: 1em;
-  @include flexBox($flexDirection: column, $justifyContent: flex-start);
+  @include prefix(display, flex);
+  flex-direction: column;
 
   &__row {
-    @include flexBox($alignItems: center, $justifyContent: space-between);
+    @include prefix(display, flex);
+    align-items: center;
+    justify-content: space-between;
     margin: .3em 0;
 
     // Last row contains info without daily statistics
@@ -206,7 +214,8 @@
 
       .desc-list__main-value {
         position: absolute;
-        @include flexBox($alignItems: center, $justifyContent: flex-start);
+        @include prefix(display, flex);
+        align-items: center;
         height: 100%;
       }
     }
@@ -218,7 +227,9 @@
 
   &__value {
     font-size: 1.5em;
-    @include flexBox($alignItems: flex-end, $flexDirection: column, $justifyContent: flex-start);
+    @include prefix(display, flex);
+    align-items: flex-end;
+    flex-direction: column;
   }
 
   &__main-value {
@@ -268,7 +279,7 @@
   visibility: hidden;
   padding: .4em 0.9em;
   transition: opacity $shortAnimation ease-in-out;
-  transform: translateX(-50%);
+  @include prefix(transform, translateX(-50%), webkit ms);
   text-align: center;
   white-space: nowrap;
   opacity: 0;
@@ -298,7 +309,9 @@
   &__inner {
     display: block;
     height: 100%;
-    @include flexBox($justifyContent: space-between, $flexDirection: column);
+    @include prefix(display, flex);
+    justify-content: space-between;
+    flex-direction: column;
   }
 
   &:hover .hamburger__inactive {
@@ -317,7 +330,7 @@
       display: block;
       height: 3px;
       width: 100%;
-      transform: translateY(10px);
+      @include prefix(transform, translateY(10px), webkit ms);
     }
     &::after {
       background-color: inherit;
@@ -325,26 +338,26 @@
       display: block;
       height: 3px;
       width: 100%;
-      transform: translateY(17px);
+      @include prefix(transform, translateY(17px), webkit ms);
     }
   }
 
   &__active {
     background-color: #ffffff;
-    transform: rotate(45deg);
+    @include prefix(transform, rotate(45deg), webkit ms);
     transform-origin: top left;
     &::after {
       background-color: inherit;
       content: '';
       display: block;
       height: 3px;
-      transform: rotate(90deg);
+      @include prefix(transform, rotate(90deg), webkit ms);
     }
   }
 }
 
 #donut-chart {
-  display: flex;
+  @include prefix(display, flex);
   justify-content: center;
 }
 
@@ -353,7 +366,7 @@
 }
 
 .theme-btn {
-  appearance: none;
+  @include prefix(appearance, none, webkit moz);
   width: 40px;
   border-radius: 28px;
   background-color: $primaryColor;

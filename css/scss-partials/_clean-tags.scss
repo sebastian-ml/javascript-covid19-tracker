@@ -1,4 +1,4 @@
-@import 'variables';
+@use 'variables';
 
 a {
   text-decoration: none;
@@ -8,7 +8,7 @@ a {
 body {
   font-family: 'Lato', sans-serif;
   color: #fff;
-  background-color: $primaryBgColor;
+  background-color: variables.$primaryBgColor;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -26,9 +26,9 @@ h3 {
 }
 
 main {
-  margin-left: $sidebarWidth;
-  padding: $gridGap;
-  min-height: calc(100vh - 2 * #{$headerHeight});
+  margin-left: variables.$sidebarWidth;
+  padding: variables.$gridGap;
+  min-height: calc(100vh - 2 * #{variables.$headerHeight});
 
   h2 {
     text-align: center;

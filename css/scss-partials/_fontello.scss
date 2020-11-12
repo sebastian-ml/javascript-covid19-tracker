@@ -1,24 +1,25 @@
-@import 'variables';
+@use 'variables';
+@use 'mixins';
 
 .icon-right-open {
   content: '\e75e';
-  color: $primaryFontColor;
+  color: variables.$primaryFontColor;
 }
 
 .icon-open-arrows {
-  @include prefix(display, flex);
-  @include flexCentered;
-  height: $headerHeight;
+  @include mixins.prefix(display, flex);
+  @include mixins.flexCentered;
+  height: variables.$headerHeight;
 
   .icon-right-open {
-    color: $primaryFontColor;
+    color: variables.$primaryFontColor;
   }
 
   .icon-right-open:nth-child(2) {
     margin-left: -.2em;
   }
 
-  transition: all $mediumAnimation ease;
+  transition: all variables.$mediumAnimation ease;
 }
 
 .icon-right-open, .icon-flag, .icon-globe {
@@ -27,7 +28,7 @@
 
 .aside {
   .icon-globe, .icon-flag {
-    width: $sidebarWidth;
+    width: variables.$sidebarWidth;
     display: flex;
     justify-content: center;
   }

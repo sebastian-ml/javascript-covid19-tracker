@@ -1,4 +1,7 @@
-@import 'mixins', 'clear-tags', 'variables', 'fontello';
+@use 'scss-partials/mixins';
+@use 'scss-partials/variables';
+@use 'scss-partials/clean-tags';
+@use 'scss-partials/fontello';
 
 *, *:after, *:before {
   box-sizing: border-box;
@@ -7,16 +10,16 @@
 }
 
 .aside {
-  @include prefix(display, flex);
+  @include mixins.prefix(display, flex);
   flex-direction: column;
   position: fixed;
   z-index: 100;
   top: 0;
   left: 0;
-  width: $sidebarWidth;
+  width: variables.$sidebarWidth;
   height: 100vh;
-  transition: width $mediumAnimation linear;
-  background-color: $primaryColor;
+  transition: width variables.$mediumAnimation linear;
+  background-color: variables.$primaryColor;
 
   &:hover {
     overflow: hidden;
@@ -32,7 +35,7 @@
     }
 
     .icon-open-arrows {
-      @include prefix(transform, rotate(-180deg), webkit ms);
+      @include mixins.prefix(transform, rotate(-180deg), webkit ms);
 
       .icon-right-open {
         color: #fff;
@@ -42,11 +45,11 @@
 }
 
 .header {
-  @include flexCentered;
-  @include prefix(display, flex);
-  height: $headerHeight;
-  color: $primaryFontColor;
-  background-color: $primaryColor;
+  @include mixins.flexCentered;
+  @include mixins.prefix(display, flex);
+  height: variables.$headerHeight;
+  color: variables.$primaryFontColor;
+  background-color: variables.$primaryColor;
   box-shadow: 0 1px 1px 0 rgba(65,65,65,0.8);
   position: sticky;
   top: 0;
@@ -57,25 +60,25 @@
 .vertical-list {
   list-style: none;
   width: 100%;
-  background-color: $primaryColor;
+  background-color: variables.$primaryColor;
 
   &__item {
-    height: $sidebarWidth;
-    @include prefix(display, flex);
+    height: variables.$sidebarWidth;
+    @include mixins.prefix(display, flex);
     align-items: center;
   }
 
   &__link {
-    @include prefix(display, flex);
+    @include mixins.prefix(display, flex);
     align-items: center;
-    color: $primaryFontColor;
+    color: variables.$primaryFontColor;
     height: 100%;
     width: 100%;
-    transition: all $shortAnimation ease-in-out;
+    transition: all variables.$shortAnimation ease-in-out;
 
     &:hover {
       color: #fff;
-      background-color: $primaryColorHover;
+      background-color: variables.$primaryColorHover;
     }
   }
 
@@ -88,7 +91,7 @@
   display: none;
 
   &__list {
-    @include prefix(display, flex);
+    @include mixins.prefix(display, flex);
     list-style: none;
 
     &-item {
@@ -97,11 +100,11 @@
   }
 
   &__link {
-    @include prefix(display, flex);
+    @include mixins.prefix(display, flex);
     align-items: center;
     height: 100%;
-    transition: all $shortAnimation ease-in-out;
-    color: $primaryFontColor;
+    transition: all variables.$shortAnimation ease-in-out;
+    color: variables.$primaryFontColor;
 
     &:hover {
       color: #fff;
@@ -111,14 +114,14 @@
 
 .nav-mobile {
   position: absolute;
-  width: calc(100% - #{$sidebarWidth});
-  left: $sidebarWidth;
+  width: calc(100% - #{variables.$sidebarWidth});
+  left: variables.$sidebarWidth;
   top: 100%;
 
   .vertical-list {
     max-height: 0;
     overflow: hidden;
-    transition: max-height $longAnimation linear;
+    transition: max-height variables.$longAnimation linear;
     border-bottom: 1px solid #363636;
 
     &--active {
@@ -134,17 +137,17 @@
 
 .container {
   width: 1700px;
-  max-width: calc(100% - 2 * #{$sidebarWidth});
-  @include prefix(display, flex);
+  max-width: calc(100% - 2 * #{variables.$sidebarWidth});
+  @include mixins.prefix(display, flex);
   justify-content: space-between;
   align-items: center;
 }
 
 .stats {
-  @include prefix(display, grid, ms);
+  @include mixins.prefix(display, grid, ms);
   grid-auto-rows: auto;
   grid-template-columns: 1fr;
-  grid-gap: $gridGap;
+  grid-gap: variables.$gridGap;
   grid-template-areas:
   'card4'
   'card1'
@@ -155,12 +158,12 @@
 }
 
 .card {
-  @include prefix(display, flex);
+  @include mixins.prefix(display, flex);
   flex-direction: column;
   padding: 2.15em;
   border-radius: 7px;
   font-size: .95rem;
-  background-color: $primaryColor;
+  background-color: variables.$primaryColor;
 
   &__1 {
     grid-area: card1;
@@ -198,11 +201,11 @@
 
 .desc-list {
   font-size: 1em;
-  @include prefix(display, flex);
+  @include mixins.prefix(display, flex);
   flex-direction: column;
 
   &__row {
-    @include prefix(display, flex);
+    @include mixins.prefix(display, flex);
     align-items: center;
     justify-content: space-between;
     margin: .3em 0;
@@ -214,7 +217,7 @@
 
       .desc-list__main-value {
         position: absolute;
-        @include prefix(display, flex);
+        @include mixins.prefix(display, flex);
         align-items: center;
         height: 100%;
       }
@@ -227,7 +230,7 @@
 
   &__value {
     font-size: 1.5em;
-    @include prefix(display, flex);
+    @include mixins.prefix(display, flex);
     align-items: flex-end;
     flex-direction: column;
   }
@@ -278,8 +281,8 @@
   display: inline-block;
   visibility: hidden;
   padding: .4em 0.9em;
-  transition: opacity $shortAnimation ease-in-out;
-  @include prefix(transform, translateX(-50%), webkit ms);
+  transition: opacity variables.$shortAnimation ease-in-out;
+  @include mixins.prefix(transform, translateX(-50%), webkit ms);
   text-align: center;
   white-space: nowrap;
   opacity: 0;
@@ -302,14 +305,14 @@
 .hamburger {
   height: 23px;
   width: 30px;
-  background-color: $primaryColor;
+  background-color: variables.$primaryColor;
   border: transparent;
   cursor: pointer;
 
   &__inner {
     display: block;
     height: 100%;
-    @include prefix(display, flex);
+    @include mixins.prefix(display, flex);
     justify-content: space-between;
     flex-direction: column;
   }
@@ -319,18 +322,18 @@
   }
 
   &__inactive {
-      background-color: $primaryFontColor;
+      background-color: variables.$primaryFontColor;
       display: block;
       height: 3px;
       width: 100%;
-      transition: background-color $shortAnimation ease-in-out;
+      transition: background-color variables.$shortAnimation ease-in-out;
     &::before {
       background-color: inherit;
       content: '';
       display: block;
       height: 3px;
       width: 100%;
-      @include prefix(transform, translateY(10px), webkit ms);
+      @include mixins.prefix(transform, translateY(10px), webkit ms);
     }
     &::after {
       background-color: inherit;
@@ -338,26 +341,26 @@
       display: block;
       height: 3px;
       width: 100%;
-      @include prefix(transform, translateY(17px), webkit ms);
+      @include mixins.prefix(transform, translateY(17px), webkit ms);
     }
   }
 
   &__active {
     background-color: #ffffff;
-    @include prefix(transform, rotate(45deg), webkit ms);
+    @include mixins.prefix(transform, rotate(45deg), webkit ms);
     transform-origin: top left;
     &::after {
       background-color: inherit;
       content: '';
       display: block;
       height: 3px;
-      @include prefix(transform, rotate(90deg), webkit ms);
+      @include mixins.prefix(transform, rotate(90deg), webkit ms);
     }
   }
 }
 
 #donut-chart {
-  @include prefix(display, flex);
+  @include mixins.prefix(display, flex);
   justify-content: center;
 }
 
@@ -366,17 +369,17 @@
 }
 
 .theme-btn {
-  @include prefix(appearance, none, webkit moz);
+  @include mixins.prefix(appearance, none, webkit moz);
   width: 40px;
   border-radius: 28px;
-  background-color: $primaryColor;
+  background-color: variables.$primaryColor;
   height: 20px;
   border: 1px solid #fff;
   cursor: pointer;
   position: relative;
   margin-bottom: 30px;
-  margin-left: ($sidebarWidth - 40px) / 2;
-  transition: all $mediumAnimation linear;
+  margin-left: (variables.$sidebarWidth - 40px) / 2;
+  transition: all variables.$mediumAnimation linear;
 
   &:checked {
     background-color: #fff;
@@ -400,7 +403,7 @@
     width: 14px;
     background-color: #fff;
     border-radius: 50%;
-    transition: all $mediumAnimation linear;
+    transition: all variables.$mediumAnimation linear;
   }
 
   &::after {
@@ -417,11 +420,11 @@
 }
 
 .footer {
-  height: $headerHeight;
-  background-color: $primaryColor;
-  margin-left: $sidebarWidth;
-  @include prefix(display, flex);
-  @include flexCentered;
+  height: variables.$headerHeight;
+  background-color: variables.$primaryColor;
+  margin-left: variables.$sidebarWidth;
+  @include mixins.prefix(display, flex);
+  @include mixins.flexCentered;
 }
 
 .social {
@@ -440,10 +443,10 @@
       background-color: #1da1f2;
     }
     &:nth-child(2):hover .social__link {
-      background-color: #1877f2;
+      background-color: #c32aa3;
     }
     &:nth-child(3):hover .social__link {
-      background-color: #c32aa3;
+      background-color: #1877f2;
     }
     &:nth-child(4):hover .social__link {
       background-color: #6cc644;
@@ -455,11 +458,11 @@
     height: 100%;
     width: 100%;
     border-radius: 50%;
-    color: $primaryColor;
-    background-color: $primaryFontColor;
-    @include prefix(display, flex);
-    @include flexCentered;
-    transition: all $mediumAnimation cubic-bezier(.43,1.5,1,1);
+    color: variables.$primaryColor;
+    background-color: variables.$primaryFontColor;
+    @include mixins.prefix(display, flex);
+    @include mixins.flexCentered;
+    transition: all variables.$mediumAnimation cubic-bezier(.43,1.5,1,1);
 
     &:hover {
       transform: translateY(-5px);
@@ -468,4 +471,4 @@
   }
 }
 
-@import 'media-query';
+@import 'scss-partials/media-query';

@@ -420,6 +420,52 @@
   height: $headerHeight;
   background-color: $primaryColor;
   margin-left: $sidebarWidth;
+  @include prefix(display, flex);
+  @include flexCentered;
+}
+
+.social {
+  &__list {
+    list-style: none;
+  }
+
+  &__item {
+    display: inline-block;
+    height: 25px;
+    width: 25px;
+    margin: 0 .4em;
+
+    // Each social media has it own color
+    &:nth-child(1):hover .social__link {
+      background-color: #1da1f2;
+    }
+    &:nth-child(2):hover .social__link {
+      background-color: #1877f2;
+    }
+    &:nth-child(3):hover .social__link {
+      background-color: #c32aa3;
+    }
+    &:nth-child(4):hover .social__link {
+      background-color: #6cc644;
+    }
+  }
+
+  &__link {
+    display: block;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    color: $primaryColor;
+    background-color: $primaryFontColor;
+    @include prefix(display, flex);
+    @include flexCentered;
+    transition: all $mediumAnimation cubic-bezier(.43,1.5,1,1);
+
+    &:hover {
+      transform: translateY(-5px);
+      color: #fff;
+    }
+  }
 }
 
 @import 'media-query';

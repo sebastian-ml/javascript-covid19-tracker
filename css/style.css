@@ -491,6 +491,53 @@ main h2 {
   height: 55px;
   background-color: #242424;
   margin-left: 70px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.social__list {
+  list-style: none;
+}
+.social__item {
+  display: inline-block;
+  height: 25px;
+  width: 25px;
+  margin: 0 0.4em;
+}
+.social__item:nth-child(1):hover .social__link {
+  background-color: #1da1f2;
+}
+.social__item:nth-child(2):hover .social__link {
+  background-color: #1877f2;
+}
+.social__item:nth-child(3):hover .social__link {
+  background-color: #c32aa3;
+}
+.social__item:nth-child(4):hover .social__link {
+  background-color: #6cc644;
+}
+.social__link {
+  display: block;
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  color: #242424;
+  background-color: #ffffff96;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 200ms cubic-bezier(0.43, 1.5, 1, 1);
+}
+.social__link:hover {
+  transform: translateY(-5px);
+  color: #fff;
 }
 
 /*Small devices (landscape phones, 576px and up)*/

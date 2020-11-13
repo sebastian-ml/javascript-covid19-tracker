@@ -1,4 +1,4 @@
-const url = 'https://corona-api.com/countries';
+const url = 'https://cors-anywhere.herokuapp.com/https://corona-api.com/countries';
 let countryArray;
 const countriesCode = [];
 
@@ -51,7 +51,7 @@ function chart(active, recovered, deaths) {
 
 
 
-const allCasesUrl = 'https://corona-api.com/timeline';
+const allCasesUrl = 'https://cors-anywhere.herokuapp.com/https://corona-api.com/timeline';
 
 // Gather covid stats for the current day, update info on the site and draw a chart
 fetch(allCasesUrl)

@@ -9,7 +9,7 @@
   padding: 0;
 }
 
-.aside {
+.sidebar {
   @include mixins.prefix(display, flex);
   flex-direction: column;
   position: fixed;
@@ -150,14 +150,12 @@
   grid-gap: variables.$gridGap;
   grid-template-areas:
   'card4'
-  'card1'
-  'card2'
-  'card3'
   'card5'
   'card6';
 }
 
 .card {
+  min-width: 0;
   @include mixins.prefix(display, flex);
   flex-direction: column;
   padding: 2.15em;
@@ -186,7 +184,7 @@
     grid-area: card6;
   }
 
-  &__header {
+  &__heading {
     margin-bottom: 1em;
     text-align: center;
   }
@@ -201,27 +199,14 @@
 
 .desc-list {
   font-size: 1em;
-  @include mixins.prefix(display, flex);
-  flex-direction: column;
+  @include mixins.prefix(display, grid, ms);
+  grid-auto-rows: 1fr;
+  grid-row-gap: .5em;
 
   &__row {
     @include mixins.prefix(display, flex);
     align-items: center;
     justify-content: space-between;
-    margin: .3em 0;
-
-    // Last row contains info without daily statistics
-    // Must be the same height as the rest
-    &:last-child .desc-list__value {
-      position: relative;
-
-      .desc-list__main-value {
-        position: absolute;
-        @include mixins.prefix(display, flex);
-        align-items: center;
-        height: 100%;
-      }
-    }
   }
 
   &__key {
@@ -276,7 +261,7 @@
 .tooltip {
   font-size: 0.75rem;
   position: absolute;
-  bottom: 100%;
+  bottom: 115%;
   left: 50%;
   display: inline-block;
   visibility: hidden;
@@ -315,6 +300,7 @@
     @include mixins.prefix(display, flex);
     justify-content: space-between;
     flex-direction: column;
+    align-items: center;
   }
 
   &:hover .hamburger__inactive {
@@ -345,15 +331,17 @@
     }
   }
 
+  // Cross sign - displayed when the mobile nav is active
   &__active {
     background-color: #ffffff;
+    height: 30px;
+    width: 3px;
     @include mixins.prefix(transform, rotate(45deg), webkit ms);
-    transform-origin: top left;
     &::after {
       background-color: inherit;
       content: '';
       display: block;
-      height: 3px;
+      height: 100%;
       @include mixins.prefix(transform, rotate(90deg), webkit ms);
     }
   }

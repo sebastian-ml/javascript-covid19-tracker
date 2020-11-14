@@ -29,8 +29,10 @@ main {
   margin-left: variables.$sidebarWidth;
   padding: variables.$gridGap;
   min-height: calc(100vh - 2 * #{variables.$headerHeight});
+}
 
-  h2 {
-    text-align: center;
-  }
+textarea {
+  resize: none;
+  font-family: inherit;
+  font-size: inherit;
 }

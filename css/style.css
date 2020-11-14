@@ -29,8 +29,11 @@ main {
   padding: 20px;
   min-height: calc(100vh - 2 * 55px);
 }
-main h2 {
-  text-align: center;
+
+textarea {
+  resize: none;
+  font-family: inherit;
+  font-size: inherit;
 }
 
 .icon-right-open {
@@ -527,6 +530,73 @@ main h2 {
 .social__link:hover {
   transform: translateY(-5px);
   color: #fff;
+}
+
+.heading-h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5em;
+}
+
+.row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.row__cell {
+  -webkit-box-flex: 1 0 400px;
+  -webkit-flex: 1 0 400px;
+  -ms-flex: 1 0 400px;
+  flex: 1 0 400px;
+}
+
+.about {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.mb-1em {
+  margin-bottom: 1em;
+}
+
+.contact__input {
+  padding: 0 0.7em;
+  width: 100%;
+  border-radius: 5px;
+  height: 3em;
+  border: 1px solid #242424;
+}
+.contact__input--large {
+  height: 10em;
+  padding: 0.7em;
+}
+.contact textarea:focus::placeholder {
+  color: transparent;
+}
+.contact__submit {
+  margin-top: 10px;
+  float: right;
+  clear: both;
+}
+
+.btn {
+  cursor: pointer;
+  border-radius: 5px;
+  border: transparent;
+  color: #000;
+  padding: 0.7em 1.3em;
+  background-color: #fff;
+  transition: background-color 200ms ease-in-out;
+}
+.btn:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.space {
+  height: 0;
+  width: 10px;
 }
 
 /*Small devices (landscape phones, 576px and up)*/

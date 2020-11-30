@@ -82,6 +82,7 @@ fetch(allCasesUrl)
         // Draw a line chart with daily cases
         drawLineChart(timeline, cases);
     })
+// add catch
 
 /**
  * Update details about covid on the page.

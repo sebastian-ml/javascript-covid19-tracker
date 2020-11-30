@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    {% include "head-template.njk" %}
+    {% include "_head.njk" %}
     {% block head %}{% endblock %}
 </head>
 <body>
-{% include "header-template.njk" %}
+{% include "_header.njk" %}
 
-{% include "aside-template.njk" %}
+{% include "_aside.njk" %}
 <!-- main content -->
-{% block content %}
+{% block main %}
 {% endblock %}
 
-{% include "footer-template.njk" %}
+{% include "_footer.njk" %}
 
+<script src="js/global.js"></script>
 {% block script %}
 {% endblock %}
 </body>

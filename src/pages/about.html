@@ -1,18 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>COVID-19 Tracker</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/fontello-d15925e7/css/fontello.css">
-</head>
-<body>
+{% extends "base.njk" %}
+{% block head %}
+{% endblock %}
+
+{% block header %}
 {% include "header-template.njk" %}
+{% endblock %}
 
-{% include "aside-template.njk" %}
-
+{% block content %}
 <main>
     <section class="about">
         <h2 class="heading-h2">About</h2>
@@ -40,9 +34,8 @@
         </div>
     </section>
 </main>
+{% endblock %}
 
-{% include "footer-template.njk" %}
-
-<script src="scripts/global.js"></script>
-</body>
-</html>
+{% block script %}
+ss
+{% endblock %}

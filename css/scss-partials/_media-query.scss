@@ -5,7 +5,7 @@
 
 /*Medium devices (tablets, 768px and up)*/
 @media (min-width: 768px) {
-  .stats {
+  .grid {
     grid-template-rows: 200px 200px auto auto;
     grid-template-columns: 1fr 1fr;
     grid-template-areas:
@@ -34,7 +34,7 @@
 
 /*Extra large devices (large desktops, 1200px and up)*/
 @media (min-width: 1200px) {
-  .stats {
+  .grid {
     grid-template-rows: 200px auto;
     grid-template-columns: repeat(3, minmax(calc(600px / 3), 1fr)) minmax(400px, 500px);
     grid-template-areas:

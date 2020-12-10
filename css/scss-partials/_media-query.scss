@@ -45,9 +45,20 @@
 @media (min-width: 1200px) {
   .grid {
     grid-template-rows: 200px auto;
-    grid-template-columns: repeat(3, minmax(calc(600px / 3), 1fr)) minmax(400px, 500px);
+    grid-template-columns: repeat(3, minmax(calc(650px / 3), 1fr)) minmax(400px, 500px);
     grid-template-areas:
     'card1 card2 card3 card4'
     'card5 card5 card5 card6';
+
+    &--country {
+      grid-template-columns: 400px 1fr 1fr 1fr minmax(400px, 500px);
+      grid-template-areas:
+      'card7 card13 card13 card13 card8'
+      'card9 card9 card9 card9 card10';
+
+      .card--11, .card--12 {
+        display: none;
+      }
+    }
   }
 }

@@ -1,35 +1,37 @@
 google.charts.load("current", {packages:["corechart"]});
 
 const allCasesUrl = 'https://cors-anywhere.herokuapp.com/https://corona-api.com/timeline';
+const covidDataset = {
+    allCases: 'covidCasesWorld',
+    casesByCountry: 'covidCasesByCountry'
+}
 
-fetchStats(allCasesUrl)
-    .then(stats => {
-        createPieChart(stats[0]);
-        updateDetails(stats[0]);
-        return stats;
-    })
-    .then(stats => {
-        drawChart(stats, drawLineChart)
-    })
+if (!sessionStorage.getItem(covidDataset['allCases'])) {
+    fetchStats(allCasesUrl)
+        .then(stats => {
+            sessionStorage.setItem(covidDataset['allCases'], JSON.stringify(stats));
+
+            updateDetails(stats[0]);
+
+            createPieChart(stats[0]);
+            drawChart(stats, drawLineChart)
+        })
+} else {
+    const allCovidCases = JSON.parse(sessionStorage.getItem(covidDataset['allCases']));
+
+    updateDetails(allCovidCases[0]);
+
+    createPieChart(allCovidCases[0]);
+    drawChart(allCovidCases, drawLineChart);
+}
 
 function createPieChart(data) {
-    google.charts.setOnLoadCallback(chart(
+    google.charts.setOnLoadCallback(() => chart(
         data['active'],
         data['recovered'],
         data['deaths'],
     ));
 }
-
-// function fillChartWithData(data) {
-//     const dailyStats = data[0];
-//
-//     updateDetails(dailyStats);
-//     google.charts.setOnLoadCallback(chart(
-//         dailyStats['active'],
-//         dailyStats['recovered'],
-//         dailyStats['deaths'],
-//     ));
-// }
 
 /**
  * Draw a chart with the given data. All arguments should be integers.
@@ -39,34 +41,33 @@ function createPieChart(data) {
  * @param deaths - People who died from covid.
  */
 function chart(active, recovered, deaths) {
-    return function () {
-        const data = google.visualization.arrayToDataTable([
-            ['Status', 'Cases'],
-            ['Active', active],
-            ['Recovered', recovered],
-            ['Deaths', deaths],
-        ]);
+    const data = google.visualization.arrayToDataTable([
+        ['Status', 'Cases'],
+        ['Active', active],
+        ['Recovered', recovered],
+        ['Deaths', deaths],
+    ]);
 
-        const options = {
-            legend: 'none',
-            chartArea: {
-                left: 0,
-                top: 0,
-                width: "100%",
-                height: "100%",
-            },
-            colors: ['#f7cc20', '#8fb447', '#bf3c39'],
-            backgroundColor: { fill:'transparent' },
-            fontSize: 15,
-            is3D: true,
-            pieSliceTextStyle: {
-                color: 'black'
-            }
-        };
+    const options = {
+        legend: 'none',
+        chartArea: {
+            left: 0,
+            top: 0,
+            width: "100%",
+            height: "100%",
+        },
+        colors: ['#f7cc20', '#8fb447', '#bf3c39'],
+        backgroundColor: { fill:'transparent' },
+        fontSize: 15,
+        is3D: true,
+        pieSliceTextStyle: {
+            color: 'black'
+        }
+    };
 
-        const chart = new google.visualization.PieChart(document.getElementById('donut-chart'));
-        chart.draw(data, options);
-    }
+    const chart = new google.visualization.PieChart(document.getElementById('donut-chart'));
+
+    chart.draw(data, options);
 }
 
 /**

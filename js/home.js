@@ -1,15 +1,35 @@
-const url = 'https://cors-anywhere.herokuapp.com/https://corona-api.com/countries';
-let countryArray;
-const countriesCode = [];
-
-// Gather all countries code and store in an array
-fetch(url)
-    .then((response) => response.json())
-    .then((jsonResp) => countryArray = jsonResp.data)
-    .then(() => countryArray.forEach((item) => countriesCode.push(item.code)))
-
-
 google.charts.load("current", {packages:["corechart"]});
+
+const allCasesUrl = 'https://cors-anywhere.herokuapp.com/https://corona-api.com/timeline';
+
+fetchStats(allCasesUrl)
+    .then(stats => {
+        createPieChart(stats[0]);
+        updateDetails(stats[0]);
+        return stats;
+    })
+    .then(stats => {
+        drawChart(stats, drawLineChart)
+    })
+
+function createPieChart(data) {
+    google.charts.setOnLoadCallback(chart(
+        data['active'],
+        data['recovered'],
+        data['deaths'],
+    ));
+}
+
+// function fillChartWithData(data) {
+//     const dailyStats = data[0];
+//
+//     updateDetails(dailyStats);
+//     google.charts.setOnLoadCallback(chart(
+//         dailyStats['active'],
+//         dailyStats['recovered'],
+//         dailyStats['deaths'],
+//     ));
+// }
 
 /**
  * Draw a chart with the given data. All arguments should be integers.
@@ -19,7 +39,7 @@ google.charts.load("current", {packages:["corechart"]});
  * @param deaths - People who died from covid.
  */
 function chart(active, recovered, deaths) {
-    return function drawChart() {
+    return function () {
         const data = google.visualization.arrayToDataTable([
             ['Status', 'Cases'],
             ['Active', active],
@@ -48,41 +68,6 @@ function chart(active, recovered, deaths) {
         chart.draw(data, options);
     }
 }
-
-
-
-const allCasesUrl = 'https://cors-anywhere.herokuapp.com/https://corona-api.com/timeline';
-
-// Gather covid stats for the current day, update info on the site and draw a chart
-fetch(allCasesUrl)
-    .then((response) => response.json())
-    .then(function (respJSON) {
-        return respJSON.data;
-    })
-    .then(function (covidData) {
-        const dailyStats = covidData[0]
-        updateDetails(dailyStats);
-        google.charts.setOnLoadCallback(chart(
-            dailyStats['active'],
-            dailyStats['recovered'],
-            dailyStats['deaths'],
-            ));
-
-        return covidData;
-    })
-    .then((covidData) => {
-        // Save daily cases and dates into 2 arrays
-        const timeline = [];
-        const cases = [];
-        covidData.forEach(function (day) {
-            timeline.push(day['date']);
-            cases.push(day['new_confirmed']);
-        })
-
-        // Draw a line chart with daily cases
-        drawLineChart(timeline, cases);
-    })
-// add catch
 
 /**
  * Update details about covid on the page.

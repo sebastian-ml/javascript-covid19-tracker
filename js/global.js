@@ -11,3 +11,23 @@ const showMobileMenu = () => {
 }
 
 hamburgerBtn.addEventListener('click', showMobileMenu);
+
+// Gather covid stats for the current day, update info on the site and draw a chart
+function fetchStats(url) {
+    return fetch(url)
+        .then(response => response.json())
+        .then(respJSON => respJSON.data)
+}
+
+const drawChart = (covidData, callback) => {
+    // Save daily cases and dates into 2 arrays
+    const timeline = [];
+    const cases = [];
+    covidData.forEach(day => {
+        timeline.push(day['date']);
+        cases.push(day['new_confirmed']);
+    })
+
+    // Draw a line chart with daily cases
+    callback(timeline, cases);
+}

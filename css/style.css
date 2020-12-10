@@ -222,7 +222,10 @@ textarea {
   grid-auto-rows: auto;
   grid-template-columns: 1fr;
   grid-gap: 20px;
-  grid-template-areas: "card4" "card5" "card6";
+  grid-template-areas: "card1" "card2" "card3" "card4" "card5" "card6";
+}
+.grid--country {
+  grid-template-areas: "card7" "card8" "card9" "card10" "card11" "card12" "card13";
 }
 
 .card {
@@ -237,24 +240,45 @@ textarea {
   font-size: 0.95rem;
   background-color: #242424;
 }
-.card__1 {
+.card--1 {
   grid-area: card1;
 }
-.card__2 {
+.card--2 {
   grid-area: card2;
 }
-.card__3 {
+.card--3 {
   grid-area: card3;
 }
 .card--4 {
   grid-area: card4;
 }
 .card--5 {
-  padding: 0;
   grid-area: card5;
+  padding: 0;
 }
 .card--6 {
   grid-area: card6;
+}
+.card--7 {
+  grid-area: card7;
+}
+.card--8 {
+  grid-area: card8;
+}
+.card--9 {
+  grid-area: card9;
+}
+.card--10 {
+  grid-area: card10;
+}
+.card--11 {
+  grid-area: card11;
+}
+.card--12 {
+  grid-area: card12;
+}
+.card--13 {
+  grid-area: card13;
 }
 .card__heading {
   margin-bottom: 1em;
@@ -633,6 +657,10 @@ textarea {
     grid-template-rows: 200px 200px auto auto;
     grid-template-columns: 1fr 1fr;
     grid-template-areas: "card4 card1" "card2 card3" "card5 card5" "card6 card6";
+  }
+  .grid--country {
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-areas: "card7 card7 card7 card8 card8 card8" "card9 card9 card9 card9 card9 card9" "card10 card10 card10 card10 card10 card10" "card11 card11 card12 card12 card13 card13";
   }
 }
 /*Large devices (desktops, 992px and up)*/

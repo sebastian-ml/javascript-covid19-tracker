@@ -149,9 +149,23 @@
   grid-template-columns: 1fr;
   grid-gap: variables.$gridGap;
   grid-template-areas:
+  'card1'
+  'card2'
+  'card3'
   'card4'
   'card5'
   'card6';
+
+  &--country {
+    grid-template-areas:
+    'card7'
+    'card8'
+    'card9'
+    'card10'
+    'card11'
+    'card12'
+    'card13';
+  }
 }
 
 .card {
@@ -163,25 +177,15 @@
   font-size: .95rem;
   background-color: variables.$primaryColor;
 
-  &__1 {
-    grid-area: card1;
-  }
-  &__2 {
-    grid-area: card2;
-  }
-  &__3 {
-    grid-area: card3;
-  }
-  &--4 {
-    grid-area: card4;
-  }
-  &--5 {
-    padding: 0;
-    // Padding for the chart
-    grid-area: card5;
-  }
-  &--6 {
-    grid-area: card6;
+  @for $i from 1 through 13 {
+    &--#{$i} {
+      grid-area: card#{$i};
+
+      @if $i == 5 {
+        padding: 0;
+        // Padding for the chart
+      }
+    }
   }
 
   &__heading {

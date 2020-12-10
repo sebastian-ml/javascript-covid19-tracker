@@ -13,6 +13,15 @@
       'card2 card3'
       'card5 card5'
       'card6 card6';
+
+    &--country {
+      grid-template-columns: repeat(6, 1fr);
+      grid-template-areas:
+      'card7 card7 card7 card8 card8 card8'
+      'card9 card9 card9 card9 card9 card9'
+      'card10 card10 card10 card10 card10 card10'
+      'card11 card11 card12 card12 card13 card13';
+    }
   }
 }
 

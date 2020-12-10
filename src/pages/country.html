@@ -13,6 +13,90 @@
             <li class="list-stripped__item">Country 2</li>
         </ul>
     </div>
+
+
+    <div class="card">
+        <h3 class="card__heading">
+            New cases today:
+        </h3>
+        <strong class="important-text important-text--large" id="new_confirmed_important">
+            + 123 456
+        </strong>
+    </div>
+
+    <div class="card">
+        <figure id="line-chart">
+            Chart
+            <!-- Contains a timeline with covid cases for a specific country -->
+        </figure>
+    </div>
+
+    <section class="card">
+        <h3 class="card__heading">Details</h3>
+        <div class="card__body">
+            <dl class="desc-list">
+                <div class="desc-list__row" id="confirmed">
+                    <dt class="desc-list__key">Total</dt>
+                    <dd class="desc-list__value">
+                        <p class="desc-list__main-value">
+                            <span class="tooltip">Total from the beginning to now</span>
+                        </p>
+                        <p class="desc-list__second-value" id="new_confirmed">
+                            <span class="tooltip">New daily cases</span>
+                        </p>
+                    </dd>
+                </div>
+                <div class="desc-list__row" id="recovered">
+                    <dt class="desc-list__key">Recovered</dt>
+                    <dd class="desc-list__value">
+                        <p class="desc-list__main-value">
+                            <span class="tooltip">Recovered from the beginning to now</span>
+                        </p>
+                        <p class="desc-list__second-value" id="new_recovered">
+                            <span class="tooltip">New daily recovered</span>
+                        </p>
+                    </dd>
+                </div>
+                <div class="desc-list__row" id="deaths">
+                    <dt class="desc-list__key">Deaths</dt>
+                    <dd class="desc-list__value">
+                        <p class="desc-list__main-value">
+                            <span class="tooltip">Deaths from the beginning to now</span>
+                        </p>
+                        <p class="desc-list__second-value" id="new_deaths">
+                            <span class="tooltip">New daily deaths</span>
+                        </p>
+                    </dd>
+                </div>
+                <div class="desc-list__row" id="active">
+                    <dt class="desc-list__key">Active</dt>
+                    <dd class="desc-list__value">
+                        <p class="desc-list__main-value">
+                            <span class="tooltip">Current number of affected people</span>
+                        </p>
+                    </dd>
+                </div>
+            </dl>
+            <div id="donut-chart">
+                <!-- Contains a chart with covid cases for a specific country -->
+            </div>
+        </div>
+        <footer class="card__footer">
+            <p>Last updated at <time datetime="2020-02-03 20:00" id="last-update">2020-02-03, 20:00</time></p>
+        </footer>
+    </section>
+
+    <article class="card">
+        Lorem ipsum
+    </article>
+
+    <article class="card">
+        Lorem ipsum
+    </article>
+
+    <article class="card">
+        Lorem ipsum
+    </article>
 </main>
 {% endblock %}
 

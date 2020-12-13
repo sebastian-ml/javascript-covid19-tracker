@@ -6,7 +6,13 @@ function fetchCountriesCode(url) {
         .then((response) => response.json())
         .then((jsonResp) => {
             const countriesCode = [];
-            (jsonResp.data).forEach((item) => countriesCode.push(item.code))
+            (jsonResp.data).forEach((item) => {
+                const country = {
+                    country_name: item.name,
+                    country_code: item.code
+                }
+                countriesCode.push(country)
+            })
 
             return countriesCode;
         })
@@ -29,7 +35,7 @@ function checkForCountryUpdate(url) {
                 .then(countriesCodeArray => {
                     const data = {
                         last_update: new Date(),
-                        code: countriesCodeArray
+                        countries: countriesCodeArray
                     }
                     localStorage.setItem('countriesCode', JSON.stringify(data));
                 })

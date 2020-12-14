@@ -267,6 +267,7 @@ textarea {
 }
 .card--9 {
   grid-area: card9;
+  padding: 0;
 }
 .card--10 {
   grid-area: card10;
@@ -294,7 +295,7 @@ textarea {
   margin-bottom: 10px;
 }
 .card .list-stripped {
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .desc-list {

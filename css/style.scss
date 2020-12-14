@@ -181,7 +181,7 @@
     &--#{$i} {
       grid-area: card#{$i};
 
-      @if $i == 5 {
+      @if $i == 5 or $i == 9 {
         padding: 0;
         // Padding for the chart
       }
@@ -205,7 +205,7 @@
   }
 
   .list-stripped {
-    overflow-y: scroll;
+    overflow-y: auto;
   }
 }
 

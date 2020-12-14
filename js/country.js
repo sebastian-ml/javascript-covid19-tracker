@@ -1,3 +1,4 @@
+let countriesList;
 /**
  * Create a list with countries
  *
@@ -25,6 +26,7 @@ function createCountryList(countriesContainer) {
                 liElem.innerText = country['country_name'];
                 countriesContainer.appendChild(liElem);
             })
+            countriesList = document.getElementsByClassName('list-stripped__item');
         })
 }
 
@@ -38,4 +40,16 @@ countryListContainer.addEventListener('click', (e) => {
 
     fetchStats(url)
         .then(data => drawChart(data['timeline'], drawLineChart));
+})
+
+const searchCountry = document.getElementById('search-country');
+searchCountry.addEventListener('keypress', (e) => {
+    if (countriesList.length < 1) return;
+    const pressedKey = e.target.value.toLowerCase();
+
+    Array.from(countriesList).forEach(country => country.style.display = '');
+    Array.from(countriesList).forEach(country => {
+        if (!country.innerText.toLowerCase()
+            .includes(pressedKey)) country.style.display = 'none';
+    })
 })

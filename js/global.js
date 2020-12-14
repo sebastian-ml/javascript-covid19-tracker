@@ -31,3 +31,11 @@ const drawChart = (covidData, callback) => {
     // Draw a line chart with daily cases
     callback(timeline, cases);
 }
+
+function createElement(htmlTag, htmlClass= undefined, htmlId = undefined) {
+    const newElement = document.createElement(htmlTag);
+    if (htmlClass) newElement.classList.add(htmlClass);
+    if (htmlId) newElement.id = htmlId;
+
+    return newElement;
+}

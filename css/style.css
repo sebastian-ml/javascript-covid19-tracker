@@ -293,6 +293,9 @@ textarea {
 .card .searchbar {
   margin-bottom: 10px;
 }
+.card .list-stripped {
+  overflow-y: scroll;
+}
 
 .desc-list {
   font-size: 1em;

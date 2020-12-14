@@ -30,3 +30,12 @@ function createCountryList(countriesContainer) {
 
 const countryListContainer = document.getElementById('country-list');
 createCountryList(countryListContainer);
+
+countryListContainer.addEventListener('click', (e) => {
+    const countryCode = e.target.dataset.countryCode;
+    const url = 'https://cors-anywhere.herokuapp.com/https://corona-api.com/countries/'
+        + countryCode;
+
+    fetchStats(url)
+        .then(data => drawChart(data['timeline'], drawLineChart));
+})

@@ -97,59 +97,59 @@ function updateDetails(currentInfo) {
     lastUpdateContainer.textContent = lastUpdate.toUTCString();
 }
 
-/**
- * Draw a line chart with the given data.
- *
- * @param xaxis - The array of x values.
- * @param yaxis - The array of y values.
- */
-function drawLineChart(xaxis, yaxis) {
-    const trace1 = {
-        x: xaxis.slice(1),
-        y: yaxis.slice(1),
-        mode: 'lines',
-        connectgaps: true,
-        line: {
-            color: 'rgba(227,27,27,0.82)',
-        }
-    };
-
-    const data = [trace1];
-
-    const layout = {
-        left: 0,
-        top: 0,
-        showlegend: false,
-        plot_bgcolor: '#242424',
-        paper_bgcolor: 'transparent',
-        font: {
-            family: 'Lato, sans-serif',
-        },
-        xaxis: {
-            title: {
-                text: 'Date',
-                font: {
-                    family: 'Lato, sans-serif',
-                    size: 15,
-                },
-            },
-            color: 'rgba(255,255,255,0.76)',
-        },
-        yaxis: {
-            title: {
-                text: 'New confirmed cases',
-                font: {
-                    family: 'Lato, sans-serif',
-                    size: 15,
-                }
-            },
-            color: 'rgba(255,255,255,0.76)',
-            zeroline: true,
-            zerolinecolor: 'rgba(210,210,210,0.56)',
-        },
-    };
-
-    const config = {responsive: true}
-
-    Plotly.newPlot('line-chart', data, layout, config);
-}
+// /**
+//  * Draw a line chart with the given data.
+//  *
+//  * @param xaxis - The array of x values.
+//  * @param yaxis - The array of y values.
+//  */
+// function drawLineChart(xaxis, yaxis) {
+//     const trace1 = {
+//         x: xaxis.slice(1),
+//         y: yaxis.slice(1),
+//         mode: 'lines',
+//         connectgaps: true,
+//         line: {
+//             color: 'rgba(227,27,27,0.82)',
+//         }
+//     };
+//
+//     const data = [trace1];
+//
+//     const layout = {
+//         left: 0,
+//         top: 0,
+//         showlegend: false,
+//         plot_bgcolor: '#242424',
+//         paper_bgcolor: 'transparent',
+//         font: {
+//             family: 'Lato, sans-serif',
+//         },
+//         xaxis: {
+//             title: {
+//                 text: 'Date',
+//                 font: {
+//                     family: 'Lato, sans-serif',
+//                     size: 15,
+//                 },
+//             },
+//             color: 'rgba(255,255,255,0.76)',
+//         },
+//         yaxis: {
+//             title: {
+//                 text: 'New confirmed cases',
+//                 font: {
+//                     family: 'Lato, sans-serif',
+//                     size: 15,
+//                 }
+//             },
+//             color: 'rgba(255,255,255,0.76)',
+//             zeroline: true,
+//             zerolinecolor: 'rgba(210,210,210,0.56)',
+//         },
+//     };
+//
+//     const config = {responsive: true}
+//
+//     Plotly.newPlot('line-chart', data, layout, config);
+// }

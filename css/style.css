@@ -291,6 +291,14 @@ textarea {
   text-align: center;
   color: #a9a9a9;
 }
+.card__important {
+  font-size: 1.9em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+}
 .card .searchbar {
   margin-bottom: 10px;
 }
@@ -565,7 +573,7 @@ textarea {
 }
 
 .heading-h2 {
-  font-size: 2rem;
+  font-size: 2.1rem;
   margin-bottom: 1.5em;
 }
 
@@ -652,6 +660,49 @@ textarea {
 .list-stripped__item:hover {
   cursor: pointer;
   background-color: #e7e9de;
+}
+
+.calendar-sheet {
+  border-radius: 7px;
+  background-color: transparent;
+  color: black;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.1rem;
+  width: 75px;
+}
+.calendar-sheet__year {
+  border-radius: 0 0 7px 7px;
+}
+.calendar-sheet__month {
+  background-color: #ffffff96;
+  width: 100%;
+  text-align: center;
+  font-size: 0.8em;
+  border-radius: 7px 7px 0 0;
+}
+.calendar-sheet__day, .calendar-sheet__year {
+  background-color: #fff;
+  width: 100%;
+  text-align: center;
+}
+.calendar-sheet__day {
+  font-size: 1.6em;
+  padding: 3px 0;
+}
+
+#daily-cases-record .card__body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100%;
 }
 
 /*Small devices (landscape phones, 576px and up)*/

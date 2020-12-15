@@ -9,8 +9,16 @@
 {% block main %}
 <main>
     <div class="grid">
-        <article class="card card--1">
-            Lorem ipsum
+        <article class="card card--1" id="daily-cases-record">
+            <h3 class="card__heading">Daily cases record</h3>
+            <div class="card__body">
+                <div class="calendar-sheet">
+                    <time datetime="2020-12" class="calendar-sheet__month">December</time>
+                    <time datetime="2020-12-01" class="calendar-sheet__day">1</time>
+                    <time datetime="2020" class="calendar-sheet__year">2020</time>
+                </div>
+                <b class="card__important">+ 123</b>
+            </div>
         </article>
         <article class="card card--2">
             Lorem ipsum

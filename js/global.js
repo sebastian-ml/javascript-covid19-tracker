@@ -96,3 +96,27 @@ function drawLineChart(xaxis, yaxis) {
 
     Plotly.newPlot('line-chart', data, layout, config);
 }
+
+/**
+ * Update a card with current covid records
+ *
+ * @param container - html container
+ * @param date - date of record. Must be a Date object.
+ * @param cases - number of cases
+ */
+function updateRecords(container, date, cases) {
+    container.getElementsByClassName('card__important')[0].innerText = '+ ' + cases;
+
+    const dayWrapper = container.getElementsByClassName('calendar-sheet__day')[0];
+    const monthWrapper = container.getElementsByClassName('calendar-sheet__month')[0];
+    const yearWrapper = container.getElementsByClassName('calendar-sheet__year')[0];
+
+    dayWrapper.innerText = date.getDate();
+    dayWrapper.dateTime = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+
+    monthWrapper.innerText = date.getMonth() + 1;
+    monthWrapper.dateTime = `${date.getFullYear()}-${date.getMonth() + 1}`;
+
+    yearWrapper.innerText = date.getFullYear();
+    yearWrapper.dateTime = `${date.getFullYear()}`;
+}

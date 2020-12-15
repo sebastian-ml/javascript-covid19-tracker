@@ -603,7 +603,7 @@
   }
 }
 
-#daily-cases-record {
+#daily-cases-record, #death-rate-record, #most-recovered-record {
   .card__body {
     @include mixins.prefix(display, flex);
     justify-content: space-evenly;

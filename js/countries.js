@@ -19,6 +19,7 @@ function fetchCountriesCode(url) {
 }
 
 // Check if countries codes in local storage should be updated
+// Update every 24h
 function checkForCountryUpdate(url) {
     if(typeof(Storage) !== void(0)) {
         let timeSinceLastUpdate;

@@ -695,7 +695,7 @@ textarea {
   padding: 3px 0;
 }
 
-#daily-cases-record .card__body {
+#daily-cases-record .card__body, #death-rate-record .card__body, #most-recovered-record .card__body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: -webkit-flex;

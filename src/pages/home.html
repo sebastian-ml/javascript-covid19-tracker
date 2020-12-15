@@ -9,23 +9,39 @@
 {% block main %}
 <main>
     <div class="grid">
-        <article class="card card--1" id="daily-cases-record">
+        <div class="card card--1" id="daily-cases-record">
             <h3 class="card__heading">Daily cases record</h3>
             <div class="card__body">
                 <div class="calendar-sheet">
-                    <time datetime="2020-12" class="calendar-sheet__month">December</time>
-                    <time datetime="2020-12-01" class="calendar-sheet__day">1</time>
-                    <time datetime="2020" class="calendar-sheet__year">2020</time>
+                    <time datetime="1970-01" class="calendar-sheet__month">January</time>
+                    <time datetime="1970-01-01" class="calendar-sheet__day">1</time>
+                    <time datetime="1970" class="calendar-sheet__year">1970</time>
                 </div>
-                <b class="card__important">+ 123</b>
+                <b class="card__important"></b>
             </div>
-        </article>
-        <article class="card card--2">
-            Lorem ipsum
-        </article>
-        <article class="card card--3">
-            Lorem ipsum
-        </article>
+        </div>
+        <div class="card card--2" id="death-rate-record">
+            <h3 class="card__heading">Highest mortality</h3>
+            <div class="card__body">
+                <div class="calendar-sheet">
+                    <time datetime="1970-01" class="calendar-sheet__month">January</time>
+                    <time datetime="1970-01-01" class="calendar-sheet__day">1</time>
+                    <time datetime="1970" class="calendar-sheet__year">1970</time>
+                </div>
+                <b class="card__important"></b>
+            </div>
+        </div>
+        <div class="card card--3" id="most-recovered-record">
+            <h3 class="card__heading">Most recovered</h3>
+            <div class="card__body">
+                <div class="calendar-sheet">
+                    <time datetime="1970-01" class="calendar-sheet__month">January</time>
+                    <time datetime="1970-01-01" class="calendar-sheet__day">1</time>
+                    <time datetime="1970" class="calendar-sheet__year">1970</time>
+                </div>
+                <b class="card__important"></b>
+            </div>
+        </div>
         <article class="card card--4">
             <h3 class="card__heading">New cases today:</h3>
             <strong class="important-text important-text--large" id="new_confirmed_important">+ 123 456</strong>

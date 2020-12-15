@@ -1,29 +1,52 @@
 google.charts.load("current", {packages:["corechart"]});
 
+// Container to put information about records
+const casesRecord = document.getElementById('daily-cases-record');
+const deathRecord = document.getElementById('death-rate-record');
+const recoveryRecord = document.getElementById('most-recovered-record');
+
 const allCasesUrl = 'https://cors-anywhere.herokuapp.com/https://corona-api.com/timeline';
 const covidDataset = {
     allCases: 'covidCasesWorld',
     casesByCountry: 'covidCasesByCountry'
-}
+};
 
-if (!sessionStorage.getItem(covidDataset['allCases'])) {
-    fetchStats(allCasesUrl)
+(function () {
+    let covidData;
+
+    if (!sessionStorage.getItem(covidDataset['allCases'])) {
+        covidData = fetchStats(allCasesUrl);
+    } else {
+        covidData = new Promise((resolve, reject) => {
+            resolve(JSON.parse(sessionStorage.getItem(covidDataset['allCases'])));
+        });
+    }
+
+    covidData
         .then(stats => {
             sessionStorage.setItem(covidDataset['allCases'], JSON.stringify(stats));
 
+            const records = {
+                cases: stats.reduce((acc, curr) => {
+                    return curr['new_confirmed'] > acc['new_confirmed'] ? curr : acc;
+                }),
+                deaths: stats.reduce((acc, curr) => {
+                    return curr['new_deaths'] > acc['new_deaths'] ? curr : acc;
+                }),
+                recovery: stats.reduce((acc, curr) => {
+                    return curr['new_recovered'] > acc['new_recovered'] ? curr : acc;
+                }),
+            }
+
+            updateRecords(casesRecord, new Date(records['cases']['date']), records['cases']['new_confirmed']);
+            updateRecords(deathRecord, new Date(records['deaths']['date']), records['deaths']['new_deaths']);
+            updateRecords(recoveryRecord, new Date(records['recovery']['date']), records['recovery']['new_recovered']);
+
             updateDetails(stats[0]);
-
             createPieChart(stats[0]);
-            drawChart(stats, drawLineChart)
-        })
-} else {
-    const allCovidCases = JSON.parse(sessionStorage.getItem(covidDataset['allCases']));
-
-    updateDetails(allCovidCases[0]);
-
-    createPieChart(allCovidCases[0]);
-    drawChart(allCovidCases, drawLineChart);
-}
+            drawChart(stats, drawLineChart);
+        });
+})();
 
 function createPieChart(data) {
     google.charts.setOnLoadCallback(() => chart(
@@ -97,59 +120,3 @@ function updateDetails(currentInfo) {
     lastUpdateContainer.textContent = lastUpdate.toUTCString();
 }
 
-// /**
-//  * Draw a line chart with the given data.
-//  *
-//  * @param xaxis - The array of x values.
-//  * @param yaxis - The array of y values.
-//  */
-// function drawLineChart(xaxis, yaxis) {
-//     const trace1 = {
-//         x: xaxis.slice(1),
-//         y: yaxis.slice(1),
-//         mode: 'lines',
-//         connectgaps: true,
-//         line: {
-//             color: 'rgba(227,27,27,0.82)',
-//         }
-//     };
-//
-//     const data = [trace1];
-//
-//     const layout = {
-//         left: 0,
-//         top: 0,
-//         showlegend: false,
-//         plot_bgcolor: '#242424',
-//         paper_bgcolor: 'transparent',
-//         font: {
-//             family: 'Lato, sans-serif',
-//         },
-//         xaxis: {
-//             title: {
-//                 text: 'Date',
-//                 font: {
-//                     family: 'Lato, sans-serif',
-//                     size: 15,
-//                 },
-//             },
-//             color: 'rgba(255,255,255,0.76)',
-//         },
-//         yaxis: {
-//             title: {
-//                 text: 'New confirmed cases',
-//                 font: {
-//                     family: 'Lato, sans-serif',
-//                     size: 15,
-//                 }
-//             },
-//             color: 'rgba(255,255,255,0.76)',
-//             zeroline: true,
-//             zerolinecolor: 'rgba(210,210,210,0.56)',
-//         },
-//     };
-//
-//     const config = {responsive: true}
-//
-//     Plotly.newPlot('line-chart', data, layout, config);
-// }

@@ -1,4 +1,5 @@
 let countriesList;
+
 /**
  * Create a list with countries
  *
@@ -41,8 +42,8 @@ countryListContainer.addEventListener('click', (e) => {
     fetchSomeData(url)
         .then(data => {
             drawLineChart(
-                (data.map(day => day['date'])).slice(1),
-                (data.map(day => day['new_confirmed'])).slice(1),
+                (data['timeline'].map(day => day['date'])).slice(1),
+                (data['timeline'].map(day => day['new_confirmed'])).slice(1),
                 'line-chart'
             );
         });

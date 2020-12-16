@@ -15,7 +15,7 @@ function fetchSomeData(url) {
         .then(respJSON => respJSON.data)
 }
 
-function createHtmlElement(htmlTagName, htmlClassName= undefined, htmlID = undefined) {
+function createHtmlElement(htmlTagName, htmlClassName, htmlID) {
     const newElement = document.createElement(htmlTagName);
 
     if (htmlClassName) newElement.classList.add(htmlClassName);
@@ -79,6 +79,43 @@ function drawLineChart(xaxis, yaxis, containerID) {
     const config = {responsive: true}
 
     Plotly.newPlot(containerID, data, layout, config);
+}
+
+/**
+ * Draw a chart with the given data. All arguments should be integers.
+ *
+ * @param active - Active covid cases.
+ * @param recovered - Currently recovered covid cases.
+ * @param deaths - People who died from covid.
+ */
+function drawPieChart(active, recovered, deaths) {
+    const data = google.visualization.arrayToDataTable([
+        ['Status', 'Cases'],
+        ['Active', active],
+        ['Recovered', recovered],
+        ['Deaths', deaths],
+    ]);
+
+    const options = {
+        legend: 'none',
+        chartArea: {
+            left: 0,
+            top: 0,
+            width: "100%",
+            height: "100%",
+        },
+        colors: ['#f7cc20', '#8fb447', '#bf3c39'],
+        backgroundColor: { fill:'transparent' },
+        fontSize: 15,
+        is3D: true,
+        pieSliceTextStyle: {
+            color: 'black'
+        }
+    };
+
+    const chart = new google.visualization.PieChart(document.getElementById('donut-chart'));
+
+    chart.draw(data, options);
 }
 
 /**

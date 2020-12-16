@@ -21,7 +21,7 @@ function createCountryList(countriesContainer) {
     countries
         .then(countries => {
             countries.forEach(country => {
-                const liElem = createElement('li', 'list-stripped__item');
+                const liElem = createHtmlElement('li', 'list-stripped__item');
                 liElem.dataset.countryCode = country['country_code'].toLowerCase();
                 liElem.innerText = country['country_name'];
                 countriesContainer.appendChild(liElem);
@@ -38,8 +38,14 @@ countryListContainer.addEventListener('click', (e) => {
     const url = 'https://cors-anywhere.herokuapp.com/https://corona-api.com/countries/'
         + countryCode;
 
-    fetchStats(url)
-        .then(data => drawChart(data['timeline'], drawLineChart));
+    fetchSomeData(url)
+        .then(data => {
+            drawLineChart(
+                (data.map(day => day['date'])).slice(1),
+                (data.map(day => day['new_confirmed'])).slice(1),
+                'line-chart'
+            );
+        });
 })
 
 const searchCountry = document.getElementById('search-country');

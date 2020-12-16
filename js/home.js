@@ -1,6 +1,5 @@
 google.charts.load("current", {packages:["corechart"]});
 
-// Container to put information about records
 const casesRecord = document.getElementById('daily-cases-record');
 const deathRecord = document.getElementById('death-rate-record');
 const recoveryRecord = document.getElementById('most-recovered-record');
@@ -15,7 +14,7 @@ const covidDataset = {
     let covidData;
 
     if (!sessionStorage.getItem(covidDataset['allCases'])) {
-        covidData = fetchStats(allCasesUrl);
+        covidData = fetchSomeData(allCasesUrl);
     } else {
         covidData = new Promise((resolve, reject) => {
             resolve(JSON.parse(sessionStorage.getItem(covidDataset['allCases'])));
@@ -44,7 +43,11 @@ const covidDataset = {
 
             updateDetails(stats[0]);
             createPieChart(stats[0]);
-            drawChart(stats, drawLineChart);
+            drawLineChart(
+                (stats.map(day => day['date'])).slice(1),
+                (stats.map(day => day['new_confirmed'])).slice(1),
+                'line-chart'
+            );
         });
 })();
 

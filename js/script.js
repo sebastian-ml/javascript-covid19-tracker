@@ -147,28 +147,29 @@ function updateRecords(container, date, cases) {
 /**
  * Update details about covid on the page.
  *
- * @param covidStats - Current corona statistics. Must be json.
- * @param htmlContainer - An html container where covid data should be put
+ * @param covidStats - Current corona statistics. Must be an object.
  */
-function updateCovidDetails(covidStats, htmlContainer) {
-    const statisticsContainer = htmlContainer.getElementsByClassName('desc-list')[0];
+function updateCovidDetails(covidStats) {
+    const statsToUpdate = [
+        'deaths', 'confirmed', 'active', 'recovered',
+        'new_confirmed', 'new_recovered', 'new_deaths',
+    ];
 
-    Array.from(statisticsContainer.children).forEach(child => {
-        const total = child.getElementsByClassName('desc-list__main-value')[0];
-        const today = child.getElementsByClassName('desc-list__second-value')[0];
+    // Find html element which matches the given ID from the array
+    // and update the value
+    statsToUpdate.forEach(stat => {
+        const statContainer = document.getElementById(stat);
 
-        total.append(parseFloat(covidStats[child.id]).toLocaleString('fr-FR'));
-
-        if (today) today.append(
-            '+ ' + parseFloat(covidStats[today.id]).toLocaleString('fr-FR')
-        );
+        if (stat.includes('new')) {
+            statContainer.innerText = '+ ' + covidStats[stat].toLocaleString('fr-FR');
+        } else {
+            statContainer.innerText = covidStats[stat].toLocaleString('fr-FR');
+        }
     })
 
-    // Update information about the time when the data was updated
     const lastUpdate = new Date(covidStats['updated_at']);
     const lastUpdateContainer = document.getElementById('last-update');
 
     lastUpdateContainer.dateTime = lastUpdate;
     lastUpdateContainer.innerText = lastUpdate.toUTCString();
 }
-

@@ -33,7 +33,6 @@ function createCountryList(countriesContainer) {
 
 const countryListContainer = document.getElementById('country-list');
 createCountryList(countryListContainer);
-const countryDetails = document.getElementById('country-details')
 
 countryListContainer.addEventListener('click', (e) => {
     const countryCode = e.target.dataset.countryCode;
@@ -52,7 +51,7 @@ countryListContainer.addEventListener('click', (e) => {
                 data['timeline'][0]['recovered'],
                 data['timeline'][0]['deaths'],
             ))
-            updateCovidDetails(data['timeline'][0], countryDetails);
+            updateCovidDetails(data['timeline'][0]);
         });
 })
 

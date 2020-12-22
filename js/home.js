@@ -3,7 +3,6 @@ google.charts.load("current", {packages:["corechart"]});
 const casesRecord = document.getElementById('daily-cases-record');
 const deathRecord = document.getElementById('death-rate-record');
 const recoveryRecord = document.getElementById('most-recovered-record');
-const globalDetails = document.getElementById('global-details');
 const newConfirmed = document.getElementById('new_confirmed_important');
 
 const covidStatsURL = 'https://cors-anywhere.herokuapp.com/https://corona-api.com/timeline';
@@ -43,7 +42,7 @@ const covidDataset = {
             updateRecords(casesRecord, new Date(records['cases']['date']), records['cases']['new_confirmed']);
             updateRecords(deathRecord, new Date(records['deaths']['date']), records['deaths']['new_deaths']);
             updateRecords(recoveryRecord, new Date(records['recovery']['date']), records['recovery']['new_recovered']);
-            updateCovidDetails(stats[0], globalDetails);
+            updateCovidDetails(stats[0]);
 
             // update charts
             google.charts.setOnLoadCallback(() => drawPieChart(

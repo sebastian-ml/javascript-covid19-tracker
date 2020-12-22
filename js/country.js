@@ -33,10 +33,11 @@ function createCountryList(countriesContainer) {
 
 const countryListContainer = document.getElementById('country-list');
 createCountryList(countryListContainer);
+const countryDetails = document.getElementById('country-details')
 
 countryListContainer.addEventListener('click', (e) => {
     const countryCode = e.target.dataset.countryCode;
-    const url = 'https://cors-anywhere.herokuapp.com/https://corona-api.com/countries/'
+    const url = 'https://corona-api.com/countries/'
         + countryCode;
 
     fetchSomeData(url)
@@ -46,10 +47,17 @@ countryListContainer.addEventListener('click', (e) => {
                 (data['timeline'].map(day => day['new_confirmed'])).slice(1),
                 'line-chart'
             );
+            google.charts.setOnLoadCallback(() => drawPieChart(
+                data['timeline'][0]['active'],
+                data['timeline'][0]['recovered'],
+                data['timeline'][0]['deaths'],
+            ))
+            updateCovidDetails(data['timeline'][0], countryDetails);
         });
 })
 
 const searchCountry = document.getElementById('search-country');
+
 searchCountry.addEventListener('keypress', (e) => {
     if (countriesList.length < 1) return;
     const pressedKey = e.target.value.toLowerCase();

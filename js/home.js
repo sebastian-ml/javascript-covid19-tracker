@@ -59,30 +59,3 @@ const covidDataset = {
         });
 })();
 
-/**
- * Update details about covid on the page.
- *
- * @param covidStats - Current corona statistics. Must be json.
- * @param htmlContainer - An html container where covid data should be put
- */
-function updateCovidDetails(covidStats, htmlContainer) {
-    const statisticsContainer = htmlContainer.getElementsByClassName('desc-list')[0];
-
-    Array.from(statisticsContainer.children).forEach(child => {
-        const total = child.getElementsByClassName('desc-list__main-value')[0];
-        const today = child.getElementsByClassName('desc-list__second-value')[0];
-
-        total.append(parseFloat(covidStats[child.id]).toLocaleString('fr-FR'));
-
-        if (today) today.append(
-            '+ ' + parseFloat(covidStats[today.id]).toLocaleString('fr-FR')
-        );
-    })
-
-    // Update information about the time when the data was updated
-    const lastUpdate = new Date(covidStats['updated_at']);
-    const lastUpdateContainer = document.getElementById('last-update');
-
-    lastUpdateContainer.dateTime = lastUpdate;
-    lastUpdateContainer.innerText = lastUpdate.toUTCString();
-}

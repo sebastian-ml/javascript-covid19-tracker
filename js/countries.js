@@ -2,7 +2,7 @@ const url = 'https://cors-anywhere.herokuapp.com/https://corona-api.com/countrie
 
 // Gather all countries code from the given url and store in an array
 function fetchCountriesCode(url) {
-    fetchSomeData(url)
+    return fetchSomeData(url)
         .then(covidStats => {
             const countryInfo = [];
 
@@ -11,7 +11,6 @@ function fetchCountriesCode(url) {
                     country_name: item.name,
                     country_code: item.code
                 }
-
                 countryInfo.push(country)
             })
 

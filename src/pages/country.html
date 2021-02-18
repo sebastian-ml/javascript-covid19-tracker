@@ -9,10 +9,15 @@
 {% block main %}
 <main class="grid grid--country">
     <div class="card card--7">
-        <label for="all-countries-list">
+        <label for="all-countries-list" class="card__heading">
             Choose a country
         </label>
-        <input list="all-countries" name="all-countries-list" id="all-countries-list">
+        <input
+                list="all-countries"
+                name="all-countries-list"
+                id="all-countries-list"
+                class="input"
+        >
 
         <datalist id="all-countries"></datalist>
     </div>

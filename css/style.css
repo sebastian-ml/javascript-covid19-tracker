@@ -595,24 +595,25 @@ textarea {
   margin-bottom: 1em;
 }
 
-.contact__input {
+.form textarea:focus::placeholder {
+  color: transparent;
+}
+.form__submit {
+  margin-top: 10px;
+  float: right;
+  clear: both;
+}
+
+.input {
   padding: 0 0.7em;
   width: 100%;
   border-radius: 5px;
   height: 3em;
   border: 1px solid #242424;
 }
-.contact__input--large {
+.input--large {
   height: 10em;
   padding: 0.7em;
-}
-.contact textarea:focus::placeholder {
-  color: transparent;
-}
-.contact__submit {
-  margin-top: 10px;
-  float: right;
-  clear: both;
 }
 
 .btn {

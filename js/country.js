@@ -1,45 +1,41 @@
-let countriesList;
+// Get a list with all countries
+function getAllCountries(url) {
+    // Check if country array is in localstorage
+    const areCountriesInLocal
+        = JSON.parse(localStorage.getItem('countriesCode')).countries;
 
-/**
- * Create a list with countries
- *
- * @param countriesContainer - html element to wrap all countries. Must be a DOM element
- */
-function createCountryList(countriesContainer) {
-    const url = 'https://cors-anywhere.herokuapp.com/https://corona-api.com/countries';
-    let countries;
-
-    // Check if there is a list in localStorage with countries
-    if (JSON.parse(localStorage.getItem('countriesCode'))) {
-        countries = new Promise((resolve, rejection) => {
-            resolve(JSON.parse(localStorage.getItem('countriesCode'))['countries']);
+    if (areCountriesInLocal === true) {
+        return new Promise((resolve, rejection) => {
+            resolve(areCountriesInLocal);
         })
     } else {
-        countries = fetchCountriesCode(url);
+        return fetchCountriesCode(url);
     }
-
-    // Create list element for each country and append to container
-    countries
-        .then(countries => {
-            countries.forEach(country => {
-                const liElem = createHtmlElement('li', 'list-stripped__item');
-                liElem.dataset.countryCode = country['country_code'].toLowerCase();
-                liElem.innerText = country['country_name'];
-                countriesContainer.appendChild(liElem);
-            })
-            countriesList = document.getElementsByClassName('list-stripped__item');
-        })
 }
 
-const countryListContainer = document.getElementById('country-list');
-createCountryList(countryListContainer);
+function createOptions(countryArray, countryContainer) {
+    countryArray.then(countries => countries.forEach(country => {
+        const optionElem = createHtmlElement('option');
 
-countryListContainer.addEventListener('click', (e) => {
-    const countryCode = e.target.dataset.countryCode;
-    const url = 'https://corona-api.com/countries/'
+        optionElem.value = country.country_name;
+        optionElem.dataset.countryCode = country.country_code.toLowerCase();
+
+        countryContainer.appendChild(optionElem);
+    }))
+
+    return countryContainer;
+}
+
+const countryDatalist = document.getElementById('all-countries');
+const countriesNames = getAllCountries(url);
+createOptions(countriesNames, countryDatalist);
+
+const countryInput = document.getElementById('all-countries-list');
+countryInput.addEventListener('change', (e) => {
+    const countryUrl = 'https://corona-api.com/countries/'
         + countryCode;
 
-    fetchSomeData(url)
+    fetchSomeData(countryUrl)
         .then(data => {
             drawLineChart(
                 (data['timeline'].map(day => day['date'])).slice(1),
@@ -55,15 +51,3 @@ countryListContainer.addEventListener('click', (e) => {
         });
 })
 
-const searchCountry = document.getElementById('search-country');
-
-searchCountry.addEventListener('keypress', (e) => {
-    if (countriesList.length < 1) return;
-    const pressedKey = e.target.value.toLowerCase();
-
-    Array.from(countriesList).forEach(country => country.style.display = '');
-    Array.from(countriesList).forEach(country => {
-        if (!country.innerText.toLowerCase()
-            .includes(pressedKey)) country.style.display = 'none';
-    })
-})

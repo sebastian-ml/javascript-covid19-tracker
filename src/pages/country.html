@@ -9,8 +9,12 @@
 {% block main %}
 <main class="grid grid--country">
     <div class="card card--7">
-        <input type="search" id="search-country" class="searchbar">
-        <ul class="list-stripped" id="country-list"></ul>
+        <label for="all-countries-list">
+            Choose a country
+        </label>
+        <input list="all-countries" name="all-countries-list" id="all-countries-list">
+
+        <datalist id="all-countries"></datalist>
     </div>
 
     <div class="card card--8">

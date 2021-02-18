@@ -299,12 +299,6 @@ textarea {
   display: flex;
   align-items: center;
 }
-.card .searchbar {
-  margin-bottom: 10px;
-}
-.card .list-stripped {
-  overflow-y: auto;
-}
 
 .desc-list {
   font-size: 1em;
@@ -637,29 +631,6 @@ textarea {
 .space {
   height: 0;
   width: 10px;
-}
-
-.searchbar {
-  border-radius: 7px;
-  border: 1px solid transparent;
-  height: 40px;
-  padding: 0.6em;
-  font-size: 1.1rem;
-}
-
-.list-stripped {
-  list-style: none;
-}
-.list-stripped__item {
-  background-color: #fff;
-  border-radius: 7px;
-  color: #000;
-  padding: 0.6em;
-  margin-bottom: 5px;
-}
-.list-stripped__item:hover {
-  cursor: pointer;
-  background-color: #e7e9de;
 }
 
 .calendar-sheet {

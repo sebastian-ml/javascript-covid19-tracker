@@ -5,7 +5,7 @@ const deathRecord = document.getElementById('death-rate-record');
 const recoveryRecord = document.getElementById('most-recovered-record');
 const newConfirmed = document.getElementById('new_confirmed_important');
 
-const covidStatsURL = 'https://cors-anywhere.herokuapp.com/https://corona-api.com/timeline';
+const covidStatsURL = 'https://corona-api.com/timeline';
 const covidDataset = {
     allCases: 'covidCasesWorld',
     casesByCountry: 'covidCasesByCountry'

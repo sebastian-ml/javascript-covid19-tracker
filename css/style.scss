@@ -205,14 +205,6 @@
     @include mixins.prefix(display, flex);
     align-items: center;
   }
-
-  .searchbar {
-    margin-bottom: 10px;
-  }
-
-  .list-stripped {
-    overflow-y: auto;
-  }
 }
 
 .desc-list {
@@ -542,31 +534,6 @@
 .space {
   height: 0;
   width: 10px;
-}
-
-.searchbar {
-  border-radius: 7px;
-  border: 1px solid transparent;
-  height: 40px;
-  padding: .6em;
-  font-size: 1.1rem;
-}
-
-.list-stripped {
-  list-style: none;
-
-  &__item {
-    background-color: #fff;
-    border-radius: 7px;
-    color: #000;
-    padding: .6em;
-    margin-bottom: 5px;
-
-    &:hover {
-      cursor: pointer;
-      background-color: #e7e9de;
-    }
-  }
 }
 
 .calendar-sheet {

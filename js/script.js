@@ -11,17 +11,22 @@ hamburgerBtn.addEventListener('click', () => {
     hamburgerStatus.classList.toggle('hamburger__active');
 })
 
-function fetchSomeData(url) {
+function fetchData(url) {
     return fetch(url)
         .then(response => response.json())
         .then(respJSON => respJSON.data)
 }
 
-function createHtmlElement(htmlTagName, htmlClassName, htmlID) {
-    const newElement = document.createElement(htmlTagName);
+function createHtmlElement(tagName, className, ID, value, [dataName, dataValue]) {
+    const newElement = document.createElement(tagName);
 
-    if (htmlClassName) newElement.classList.add(htmlClassName);
-    if (htmlID) newElement.id = htmlID;
+    if (className) newElement.classList.add(className);
+    if (ID) newElement.id = ID;
+    if (value) newElement.value = value;
+    if (dataName) newElement.setAttribute(
+        `data-${dataName}`,
+        dataValue
+    );
 
     return newElement;
 }

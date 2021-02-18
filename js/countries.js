@@ -2,7 +2,7 @@ const url = 'https://corona-api.com/countries';
 
 // Gather all countries code from the given url and store in an array
 function fetchCountriesCode(url) {
-    return fetchSomeData(url)
+    return fetchData(url)
         .then(covidStats => {
             const countryInfo = [];
 

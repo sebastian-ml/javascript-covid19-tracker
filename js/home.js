@@ -15,7 +15,7 @@ const covidDataset = {
     let covidData;
 
     if (!sessionStorage.getItem(covidDataset['allCases'])) {
-        covidData = fetchSomeData(covidStatsURL);
+        covidData = fetchData(covidStatsURL);
     } else {
         covidData = new Promise((resolve, reject) => {
             resolve(JSON.parse(sessionStorage.getItem(covidDataset['allCases'])));

@@ -1,28 +1,29 @@
-const url = 'https://corona-api.com/countries';
+const countryURL = "https://corona-api.com/countries";
+const isUpdateRequired = checkForCountryUpdate(24);
 
-// Check if countries codes in local storage should be updated
-// Update every 24h
-function checkForCountryUpdate(url) {
-    if(typeof(Storage) !== void(0)) {
-        let timeSinceUpdate;
-        const countriesCode = JSON.parse(localStorage.getItem('countriesCode'));
+if (isUpdateRequired) udpdateCountryData(countryURL);
 
-        if (countriesCode) timeSinceUpdate = new Date() - new Date(countriesCode['last_update']);
+// Check if update is needed (last update was 'hours' ago)
+function checkForCountryUpdate(hours) {
+  if (typeof Storage !== void 0) {
+    let timeSinceUpdate;
+    const countriesCode = JSON.parse(localStorage.getItem("countriesCode"));
 
-        if (!countriesCode || (timeSinceUpdate >= 1000 * 60 * 60 * 24)) {
-            const countriesCode = fetchData(url);
-
-            // Save countries code in localStorage
-            countriesCode
-                .then(countryInfo => {
-                    const data = {
-                        last_update: new Date(),
-                        countries: countryInfo
-                    }
-                    localStorage.setItem('countriesCode', JSON.stringify(data));
-                })
-        }
+    if (countriesCode) {
+      timeSinceUpdate = new Date() - new Date(countriesCode.last_update);
     }
+    if (!countriesCode || timeSinceUpdate >= 1000 * 60 * 60 * hours) {
+      return true;
+    }
+  }
 }
 
-checkForCountryUpdate(url);
+// Update local data if it is required
+async function udpdateCountryData(url) {
+  const countriesCode = await fetchData(url);
+  const data = {
+    last_update: new Date(),
+    countries: countriesCode,
+  };
+  localStorage.setItem("countriesCode", JSON.stringify(data));
+}

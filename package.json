@@ -18,6 +18,7 @@
   "homepage": "https://github.com/sebastian-ml/javascript-covid19-tracker#readme",
   "devDependencies": {
     "gulp": "^4.0.2",
-    "gulp-nunjucks-render": "^2.2.3"
+    "gulp-nunjucks-render": "^2.2.3",
+    "prettier": "^2.2.1"
   }
 }

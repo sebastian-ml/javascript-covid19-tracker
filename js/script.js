@@ -11,10 +11,11 @@ hamburgerBtn.addEventListener('click', () => {
     hamburgerStatus.classList.toggle('hamburger__active');
 })
 
-function fetchData(url) {
-    return fetch(url)
-        .then(response => response.json())
-        .then(respJSON => respJSON.data)
+async function fetchData(url) {
+    const response = await fetch(url);
+    const responseJSON = await response.json();
+
+    return responseJSON.data;
 }
 
 function createHtmlElement(tagName, className, ID, value, [dataName, dataValue]) {

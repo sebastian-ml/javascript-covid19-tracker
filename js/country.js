@@ -1,5 +1,5 @@
 // Get a list with all countries
-function getAllCountries(url) {
+function getCountriesFromLocal(url) {
     // Check if country array is in localstorage
     const areCountriesInLocal =
         JSON.parse(localStorage.getItem('countriesCode')).countries;
@@ -9,54 +9,53 @@ function getAllCountries(url) {
             resolve(areCountriesInLocal);
         });
     } else {
-        return fetchCountriesCode(url);
+        return fetchData(url);
     }
 }
 
 // Fill datalist with countries
-function createOptions(countryArray, countryContainer) {
-    countryArray.then(countries => countries.forEach(country => {
+async function createOptions(countryContainer, url) {
+    const countriesInfo = await getCountriesFromLocal(url);
+
+    countriesInfo.forEach(country => {
         const optionElem = createHtmlElement(
             'option',
             undefined,
             undefined,
-            country.country_name,
-            ['country-code', country.country_code.toLowerCase()]
+            country.name,
+            ['country-code', country.code.toLowerCase()]
         );
 
         countryContainer.appendChild(optionElem);
-    }))
+    })
 
     return countryContainer;
 }
 
 const countryDatalist = document.getElementById('all-countries');
-const countriesNames = getAllCountries(url);
-createOptions(countriesNames, countryDatalist);
+createOptions(countryDatalist, url);
 
 const countryInput = document.getElementById('all-countries-list');
 
-countryInput.addEventListener('change', (e) => {
+// Show covid data for the selected country
+countryInput.addEventListener('change', async (e) => {
     const chosenCountryHTML =
         document.querySelector(`option[value="${e.target.value}"]`);
     const countryCode = chosenCountryHTML.dataset.countryCode;
-    const countryURL = 'https://corona-api.com/countries/'
-        + countryCode;
+    const countryURL = 'https://corona-api.com/countries/' + countryCode;
 
-    fetchData(countryURL)
-        .then(data => {
-            drawLineChart(
-                (data['timeline'].map(day => day['date'])).slice(1),
-                (data['timeline'].map(day => day['new_confirmed'])).slice(1),
-                'line-chart'
-            );
-            google.charts.setOnLoadCallback(() => {
-                drawPieChart(
-                    data['timeline'][0]['active'],
-                    data['timeline'][0]['recovered'],
-                    data['timeline'][0]['deaths'],
-                )
-            });
-            updateCovidDetails(data['timeline'][0]);
-        });
+    const countryData = await fetchData(countryURL);
+    drawLineChart(
+        (countryData['timeline'].map(day => day['date'])).slice(1),
+        (countryData['timeline'].map(day => day['new_confirmed'])).slice(1),
+        'line-chart'
+    );
+    google.charts.setOnLoadCallback(() => {
+        drawPieChart(
+            countryData['timeline'][0]['active'],
+            countryData['timeline'][0]['recovered'],
+            countryData['timeline'][0]['deaths'],
+        )
+    });
+    updateCovidDetails(countryData['timeline'][0]);
 });

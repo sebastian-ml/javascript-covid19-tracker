@@ -54,16 +54,17 @@ function runUpdates({ cases, deaths, recovery }, covidData) {
   updateCovidDetails(covidData[0]);
 
   // update charts
-  google.charts.setOnLoadCallback(() =>
-    drawPieChart(
+  google.charts.setOnLoadCallback(async () => {
+    await drawPieChart(
       covidData[0]["active"],
       covidData[0]["recovered"],
       covidData[0]["deaths"]
-    )
-  );
-  drawLineChart(
-    covidData.map((day) => day["date"]).slice(1),
-    covidData.map((day) => day["new_confirmed"]).slice(1),
-    "line-chart"
-  );
+    );
+
+    drawLineChart(
+      covidData.map((day) => day["date"]).slice(1),
+      covidData.map((day) => day["new_confirmed"]).slice(1),
+      "line-chart"
+    );
+  });
 }

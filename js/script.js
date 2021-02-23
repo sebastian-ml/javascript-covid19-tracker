@@ -38,6 +38,126 @@ function createHtmlElement(
   return newElement;
 }
 
+function runUpdates(
+  { cases, deaths, recovery },
+  covidData,
+  newConfirmContainer,
+  casesContainer,
+  deathContainer,
+  recoveryContainer
+) {
+  newConfirmContainer.innerText =
+    "+ " + covidData[0]["new_confirmed"].toLocaleString("fr-FR");
+
+  updateRecords(
+    casesContainer,
+    new Date(cases["date"]),
+    cases["new_confirmed"]
+  );
+  updateRecords(deathContainer, new Date(deaths["date"]), deaths["new_deaths"]);
+  updateRecords(
+    recoveryContainer,
+    new Date(recovery["date"]),
+    recovery["new_recovered"]
+  );
+  updateCovidDetails(covidData[0]);
+
+  // update charts
+  google.charts.setOnLoadCallback(async () => {
+    await drawPieChart(
+      covidData[0]["active"],
+      covidData[0]["recovered"],
+      covidData[0]["deaths"]
+    );
+
+    drawLineChart(
+      covidData.map((day) => day["date"]).slice(1),
+      covidData.map((day) => day["new_confirmed"]).slice(1),
+      "line-chart"
+    );
+  });
+}
+
+function findCovidRecords(dataset) {
+  return {
+    cases: dataset.reduce((acc, curr) => {
+      return curr["new_confirmed"] > acc["new_confirmed"] ? curr : acc;
+    }),
+    deaths: dataset.reduce((acc, curr) => {
+      return curr["new_deaths"] > acc["new_deaths"] ? curr : acc;
+    }),
+    recovery: dataset.reduce((acc, curr) => {
+      return curr["new_recovered"] > acc["new_recovered"] ? curr : acc;
+    }),
+  };
+}
+
+/**
+ * Update a card with current covid records
+ *
+ * @param container - html container which should be updated. Must be a DOM
+ * @param date - date of record. Must be a Date object.
+ * @param cases - number of cases. Must be a number
+ */
+function updateRecords(container, date, cases) {
+  container.getElementsByClassName("card__important")[0].innerText =
+    "+ " + cases;
+
+  const dayWrapper = container.getElementsByClassName("calendar-sheet__day")[0];
+  const monthWrapper = container.getElementsByClassName(
+    "calendar-sheet__month"
+  )[0];
+  const yearWrapper = container.getElementsByClassName(
+    "calendar-sheet__year"
+  )[0];
+
+  dayWrapper.innerText = date.getDate();
+  dayWrapper.dateTime = `${date.getFullYear()}-${
+    date.getMonth() + 1
+  }-${date.getDate()}`;
+
+  monthWrapper.innerText = date.getMonth() + 1;
+  monthWrapper.dateTime = `${date.getFullYear()}-${date.getMonth() + 1}`;
+
+  yearWrapper.innerText = date.getFullYear();
+  yearWrapper.dateTime = `${date.getFullYear()}`;
+}
+
+/**
+ * Update details about covid on the page.
+ *
+ * @param covidStats - Current corona statistics. Must be an object.
+ */
+function updateCovidDetails(covidStats) {
+  const statsToUpdate = [
+    "deaths",
+    "confirmed",
+    "active",
+    "recovered",
+    "new_confirmed",
+    "new_recovered",
+    "new_deaths",
+  ];
+
+  // Find html element which matches the given ID from the array
+  // and update the value
+  statsToUpdate.forEach((stat) => {
+    const statContainer = document.getElementById(stat);
+
+    if (stat.includes("new")) {
+      statContainer.innerText = "+ " + covidStats[stat].toLocaleString("fr-FR");
+    } else {
+      statContainer.innerText = covidStats[stat].toLocaleString("fr-FR");
+    }
+  });
+
+  const lastUpdate = new Date(covidStats["updated_at"]);
+  const lastUpdateContainer = document.getElementById("last-update");
+
+  lastUpdateContainer.dateTime = lastUpdate;
+  lastUpdateContainer.innerText = lastUpdate.toUTCString();
+}
+
 /**
  * Draw a line chart.
  *
@@ -132,70 +252,4 @@ function drawPieChart(active, recovered, deaths) {
   );
 
   chart.draw(data, options);
-}
-
-/**
- * Update a card with current covid records
- *
- * @param container - html container which should be updated. Must be a DOM
- * @param date - date of record. Must be a Date object.
- * @param cases - number of cases. Must be a number
- */
-function updateRecords(container, date, cases) {
-  container.getElementsByClassName("card__important")[0].innerText =
-    "+ " + cases;
-
-  const dayWrapper = container.getElementsByClassName("calendar-sheet__day")[0];
-  const monthWrapper = container.getElementsByClassName(
-    "calendar-sheet__month"
-  )[0];
-  const yearWrapper = container.getElementsByClassName(
-    "calendar-sheet__year"
-  )[0];
-
-  dayWrapper.innerText = date.getDate();
-  dayWrapper.dateTime = `${date.getFullYear()}-${
-    date.getMonth() + 1
-  }-${date.getDate()}`;
-
-  monthWrapper.innerText = date.getMonth() + 1;
-  monthWrapper.dateTime = `${date.getFullYear()}-${date.getMonth() + 1}`;
-
-  yearWrapper.innerText = date.getFullYear();
-  yearWrapper.dateTime = `${date.getFullYear()}`;
-}
-
-/**
- * Update details about covid on the page.
- *
- * @param covidStats - Current corona statistics. Must be an object.
- */
-function updateCovidDetails(covidStats) {
-  const statsToUpdate = [
-    "deaths",
-    "confirmed",
-    "active",
-    "recovered",
-    "new_confirmed",
-    "new_recovered",
-    "new_deaths",
-  ];
-
-  // Find html element which matches the given ID from the array
-  // and update the value
-  statsToUpdate.forEach((stat) => {
-    const statContainer = document.getElementById(stat);
-
-    if (stat.includes("new")) {
-      statContainer.innerText = "+ " + covidStats[stat].toLocaleString("fr-FR");
-    } else {
-      statContainer.innerText = covidStats[stat].toLocaleString("fr-FR");
-    }
-  });
-
-  const lastUpdate = new Date(covidStats["updated_at"]);
-  const lastUpdateContainer = document.getElementById("last-update");
-
-  lastUpdateContainer.dateTime = lastUpdate;
-  lastUpdateContainer.innerText = lastUpdate.toUTCString();
 }

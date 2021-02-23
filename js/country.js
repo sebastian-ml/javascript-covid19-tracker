@@ -41,18 +41,22 @@ countryInput.addEventListener("change", async (e) => {
   const countryCode = chosenCountryHTML.dataset.countryCode;
   const countryURL = "https://corona-api.com/countries/" + countryCode;
 
+  const casesRecord = document.getElementById("daily-cases-record");
+  const deathRecord = document.getElementById("death-rate-record");
+  const recoveryRecord = document.getElementById("most-recovered-record");
+  const newConfirmed = document.getElementById("new_confirmed_important");
+
   const countryData = await fetchData(countryURL);
-  drawLineChart(
-    countryData["timeline"].map((day) => day["date"]).slice(1),
-    countryData["timeline"].map((day) => day["new_confirmed"]).slice(1),
-    "line-chart"
+  const countryTimeline = countryData.timeline;
+
+  const records = findCovidRecords(countryTimeline);
+
+  runUpdates(
+    records,
+    countryTimeline,
+    newConfirmed,
+    casesRecord,
+    deathRecord,
+    recoveryRecord
   );
-  google.charts.setOnLoadCallback(() => {
-    drawPieChart(
-      countryData["timeline"][0]["active"],
-      countryData["timeline"][0]["recovered"],
-      countryData["timeline"][0]["deaths"]
-    );
-  });
-  updateCovidDetails(countryData["timeline"][0]);
 });

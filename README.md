@@ -9,6 +9,8 @@
 <li>JavaScript</li>
 <li>HTML</li>
 <li>CSS/SCSS</li>
+<li>Nunjucks templates</li>
+ <li>Gulp</li>
 <li>data visualization packages e.g. Google Charts</li>
 </ul>
 

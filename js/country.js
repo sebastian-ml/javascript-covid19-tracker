@@ -60,3 +60,15 @@ countryInput.addEventListener("change", async (e) => {
     recoveryRecord
   );
 });
+
+const countryInputLabel = document.getElementById("all-countries-list-label");
+countryInputLabel.addEventListener("click", () => {
+  e.preventDefault();
+});
+
+// Delete current value country if the user clicks the datalist
+countryInput.addEventListener("click", function () {
+  if (this.value.length > 0) {
+    this.value = "";
+  }
+});

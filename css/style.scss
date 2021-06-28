@@ -12,7 +12,7 @@
 }
 
 .sidebar {
-  display: flex;
+  display: none;
   flex-direction: column;
   position: fixed;
   z-index: 100;
@@ -117,9 +117,9 @@
 
 .nav-mobile {
   position: absolute;
-  width: calc(100% - #{variables.$sidebarWidth});
-  left: variables.$sidebarWidth;
+  width: 100%;
   top: 100%;
+  left: 0;
 
   .vertical-list {
     max-height: 0;
@@ -128,7 +128,7 @@
     border-bottom: 1px solid #363636;
 
     &--active {
-      max-height: 300px; // Must be higher than the exact height of the list
+      max-height: 550px; // Must be higher than the exact height of the list
     }
   }
 
@@ -140,7 +140,7 @@
 
 .container {
   width: 1700px;
-  max-width: calc(100% - 2 * #{variables.$sidebarWidth});
+  max-width: calc(100% - 2 * #{variables.$gridGap});
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -431,7 +431,6 @@
 .footer {
   height: variables.$headerHeight;
   background-color: variables.$primaryColor;
-  margin-left: variables.$sidebarWidth;
   display: flex;
   @include mixins.flexCentered;
 }

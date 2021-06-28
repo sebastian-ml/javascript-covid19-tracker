@@ -6,13 +6,18 @@ a {
 }
 
 body {
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   color: #fff;
   background-color: variables.$primaryBgColor;
   overflow-x: hidden;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 400;
   color: inherit;
 }
@@ -27,7 +32,6 @@ h3 {
 }
 
 main {
-  margin-left: variables.$sidebarWidth;
   padding: variables.$gridGap;
   min-height: calc(100vh - 2 * #{variables.$headerHeight});
 }

@@ -11,7 +11,12 @@ body {
   overflow-x: hidden;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 400;
   color: inherit;
 }
@@ -26,7 +31,6 @@ h3 {
 }
 
 main {
-  margin-left: 70px;
   padding: 20px;
   min-height: calc(100vh - 2 * 55px);
 }
@@ -78,7 +82,7 @@ textarea {
 }
 
 .sidebar {
-  display: flex;
+  display: none;
   flex-direction: column;
   position: fixed;
   z-index: 100;
@@ -170,9 +174,9 @@ textarea {
 
 .nav-mobile {
   position: absolute;
-  width: calc(100% - 70px);
-  left: 70px;
+  width: 100%;
   top: 100%;
+  left: 0;
 }
 .nav-mobile .vertical-list {
   max-height: 0;
@@ -181,7 +185,7 @@ textarea {
   border-bottom: 1px solid #363636;
 }
 .nav-mobile .vertical-list--active {
-  max-height: 300px;
+  max-height: 550px;
 }
 .nav-mobile .vertical-list__link {
   justify-content: center;
@@ -189,7 +193,7 @@ textarea {
 
 .container {
   width: 1700px;
-  max-width: calc(100% - 2 * 70px);
+  max-width: calc(100% - 2 * 20px);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -469,7 +473,6 @@ textarea {
 .footer {
   height: 55px;
   background-color: #242424;
-  margin-left: 70px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -658,6 +661,19 @@ textarea {
 
   .hamburger {
     display: none;
+  }
+
+  .sidebar {
+    display: flex;
+  }
+
+  .container {
+    max-width: calc(100% - 2 * 70px);
+  }
+
+  main,
+.footer {
+    margin-left: 70px;
   }
 }
 /*Extra large devices (large desktops, 1200px and up)*/

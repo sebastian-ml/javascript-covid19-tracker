@@ -2,12 +2,12 @@
 @use 'mixins';
 
 .icon-right-open {
-  content: '\e75e';
+  content: "\e75e";
   color: variables.$primaryFontColor;
 }
 
 .icon-open-arrows {
-  @include mixins.prefix(display, flex);
+  display: flex;
   @include mixins.flexCentered;
   height: variables.$headerHeight;
 
@@ -16,18 +16,21 @@
   }
 
   .icon-right-open:nth-child(2) {
-    margin-left: -.2em;
+    margin-left: -0.2em;
   }
 
   transition: all variables.$mediumAnimation ease;
 }
 
-.icon-right-open, .icon-flag, .icon-globe {
+.icon-right-open,
+.icon-flag,
+.icon-globe {
   font-size: 1.4rem;
 }
 
 .sidebar {
-  .icon-globe, .icon-flag {
+  .icon-globe,
+  .icon-flag {
     width: variables.$sidebarWidth;
     display: flex;
     justify-content: center;

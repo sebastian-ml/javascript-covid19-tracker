@@ -43,9 +43,6 @@ textarea {
 }
 
 .icon-open-arrows {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -59,26 +56,28 @@ textarea {
   margin-left: -0.2em;
 }
 
-.icon-right-open, .icon-flag, .icon-globe {
+.icon-right-open,
+.icon-flag,
+.icon-globe {
   font-size: 1.4rem;
 }
 
-.sidebar .icon-globe, .sidebar .icon-flag {
+.sidebar .icon-globe,
+.sidebar .icon-flag {
   width: 70px;
   display: flex;
   justify-content: center;
 }
 
-*, *:after, *:before {
+*,
+*:after,
+*:before {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
 .sidebar {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
   display: flex;
   flex-direction: column;
   position: fixed;
@@ -102,8 +101,6 @@ textarea {
   display: inline;
 }
 .sidebar:hover .icon-open-arrows {
-  -webkit-transform: rotate(-180deg);
-  -ms-transform: rotate(-180deg);
   transform: rotate(-180deg);
 }
 .sidebar:hover .icon-open-arrows .icon-right-open {
@@ -113,9 +110,6 @@ textarea {
 .header {
   justify-content: center;
   align-items: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
   display: flex;
   height: 55px;
   color: #ffffff96;
@@ -134,16 +128,10 @@ textarea {
 }
 .vertical-list__item {
   height: 70px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
   display: flex;
   align-items: center;
 }
 .vertical-list__link {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
   display: flex;
   align-items: center;
   color: #ffffff96;
@@ -163,9 +151,6 @@ textarea {
   display: none;
 }
 .nav__list {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
   display: flex;
   list-style: none;
 }
@@ -173,9 +158,6 @@ textarea {
   margin-left: 1em;
 }
 .nav__link {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
   display: flex;
   align-items: center;
   height: 100%;
@@ -208,16 +190,12 @@ textarea {
 .container {
   width: 1700px;
   max-width: calc(100% - 2 * 70px);
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .grid {
-  -ms-display: grid;
   display: grid;
   grid-auto-rows: auto;
   grid-template-columns: 1fr;
@@ -230,9 +208,6 @@ textarea {
 
 .card {
   min-width: 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
   display: flex;
   flex-direction: column;
   padding: 2.15em;
@@ -293,24 +268,21 @@ textarea {
 }
 .card__important {
   font-size: 1.9em;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
   display: flex;
   align-items: center;
+  white-space: nowrap;
+}
+.card__important--small {
+  font-size: 1em;
 }
 
 .desc-list {
   font-size: 1em;
-  -ms-display: grid;
   display: grid;
   grid-auto-rows: 1fr;
   grid-row-gap: 0.5em;
 }
 .desc-list__row {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -320,9 +292,6 @@ textarea {
 }
 .desc-list__value {
   font-size: 1.5em;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
   display: flex;
   align-items: flex-end;
   flex-direction: column;
@@ -365,8 +334,6 @@ textarea {
   visibility: hidden;
   padding: 0.4em 0.9em;
   transition: opacity 100ms ease-in-out;
-  -webkit-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
   transform: translateX(-50%);
   text-align: center;
   white-space: nowrap;
@@ -396,9 +363,6 @@ textarea {
 .hamburger__inner {
   display: block;
   height: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -420,8 +384,6 @@ textarea {
   display: block;
   height: 3px;
   width: 100%;
-  -webkit-transform: translateY(10px);
-  -ms-transform: translateY(10px);
   transform: translateY(10px);
 }
 .hamburger__inactive::after {
@@ -430,16 +392,12 @@ textarea {
   display: block;
   height: 3px;
   width: 100%;
-  -webkit-transform: translateY(17px);
-  -ms-transform: translateY(17px);
   transform: translateY(17px);
 }
 .hamburger__active {
   background-color: #ffffff;
   height: 30px;
   width: 3px;
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
 .hamburger__active::after {
@@ -447,15 +405,10 @@ textarea {
   content: "";
   display: block;
   height: 100%;
-  -webkit-transform: rotate(90deg);
-  -ms-transform: rotate(90deg);
   transform: rotate(90deg);
 }
 
 #donut-chart {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
   display: flex;
   justify-content: center;
 }
@@ -517,9 +470,6 @@ textarea {
   height: 55px;
   background-color: #242424;
   margin-left: 70px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -553,9 +503,6 @@ textarea {
   border-radius: 50%;
   color: #242424;
   background-color: #ffffff96;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -572,17 +519,11 @@ textarea {
 }
 
 .row {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
   display: flex;
   flex-flow: row wrap;
 }
 
 .row__cell {
-  -webkit-box-flex: 1 0 400px;
-  -webkit-flex: 1 0 400px;
-  -ms-flex: 1 0 400px;
   flex: 1 0 400px;
 }
 
@@ -594,7 +535,12 @@ textarea {
 .mb-1em {
   margin-bottom: 1em;
 }
-
+.form textarea:focus::-moz-placeholder {
+  color: transparent;
+}
+.form textarea:focus:-ms-input-placeholder {
+  color: transparent;
+}
 .form textarea:focus::placeholder {
   color: transparent;
 }
@@ -638,14 +584,16 @@ textarea {
   border-radius: 7px;
   background-color: transparent;
   color: black;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
   display: flex;
   flex-direction: column;
   align-items: center;
   font-size: 1.1rem;
   width: 75px;
+}
+.calendar-sheet--small {
+  font-size: 0.8rem;
+  width: 60px;
+  height: 60px;
 }
 .calendar-sheet__year {
   border-radius: 0 0 7px 7px;
@@ -667,14 +615,19 @@ textarea {
   padding: 3px 0;
 }
 
-#daily-cases-record .card__body, #death-rate-record .card__body, #most-recovered-record .card__body {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
+#daily-cases-record .card__body,
+#death-rate-record .card__body,
+#most-recovered-record .card__body {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   height: 100%;
+}
+
+#card--11 .card__body,
+#card--12 .card__body,
+#card--13 .card__body {
+  justify-content: center;
 }
 
 /*Small devices (landscape phones, 576px and up)*/
@@ -716,11 +669,6 @@ textarea {
   }
   .grid--country {
     grid-template-columns: 400px 1fr 1fr 1fr minmax(400px, 500px);
-    grid-template-areas: "card7 card13 card13 card13 card8" "card9 card9 card9 card9 card10";
+    grid-template-areas: "card7 card11 card12 card13 card8" "card9 card9 card9 card9 card10";
   }
-  .grid--country .card--11, .grid--country .card--12 {
-    display: none;
-  }
-}
-
-/*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=style.css.map */

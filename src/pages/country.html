@@ -1,142 +1,145 @@
-{% set title = "Country statistics" %}
-
-{% extends "base.njk" %}
-{% block head %}
+{% set title = "Country statistics" %} {% extends "base.njk" %} {% block head %}
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 <script src="https://www.gstatic.com/charts/loader.js"></script>
-{% endblock %}
-
-{% block main %}
+{% endblock %} {% block main %}
 <main class="grid grid--country">
-    <div class="card card--7">
-        <label id="all-countries-list-label" for="all-countries-list" class="card__heading">
-            Choose a country
-        </label>
-        <input
-                list="all-countries"
-                name="all-countries-list"
-                id="all-countries-list"
-                class="input"
+  <div class="card card--7">
+    <label
+      id="all-countries-list-label"
+      for="all-countries-list"
+      class="card__heading"
+    >
+      Choose a country
+    </label>
+    <input
+      list="all-countries"
+      name="all-countries-list"
+      id="all-countries-list"
+      class="input"
+    />
+
+    <datalist id="all-countries"></datalist>
+  </div>
+
+  <div class="card card--8">
+    <h3 class="card__heading">New cases today:</h3>
+    <strong
+      class="important-text important-text--large"
+      id="new_confirmed_important"
+    >
+      + 123 456
+    </strong>
+  </div>
+
+  <div class="card card--9">
+    <figure id="line-chart">
+      <!-- Contains a timeline with covid cases for a specific country -->
+    </figure>
+  </div>
+
+  <section class="card card--10" id="country-details">
+    <h3 class="card__heading">Details</h3>
+    <div class="card__body">
+      <dl class="desc-list">
+        <div class="desc-list__row">
+          <dt class="desc-list__key">Total</dt>
+          <dd class="desc-list__value">
+            <p class="desc-list__main-value">
+              <span class="tooltip">Total from the beginning to now</span>
+              <span id="confirmed"></span>
+            </p>
+            <p class="desc-list__second-value">
+              <span class="tooltip">New daily cases</span>
+              <span id="new_confirmed"></span>
+            </p>
+          </dd>
+        </div>
+        <div class="desc-list__row">
+          <dt class="desc-list__key">Recovered</dt>
+          <dd class="desc-list__value">
+            <p class="desc-list__main-value">
+              <span class="tooltip">Recovered from the beginning to now</span>
+              <span id="recovered"></span>
+            </p>
+            <p class="desc-list__second-value">
+              <span class="tooltip">New daily recovered</span>
+              <span id="new_recovered"></span>
+            </p>
+          </dd>
+        </div>
+        <div class="desc-list__row">
+          <dt class="desc-list__key">Deaths</dt>
+          <dd class="desc-list__value">
+            <p class="desc-list__main-value">
+              <span class="tooltip">Deaths from the beginning to now</span>
+              <span id="deaths"></span>
+            </p>
+            <p class="desc-list__second-value">
+              <span class="tooltip">New daily deaths</span>
+              <span id="new_deaths"></span>
+            </p>
+          </dd>
+        </div>
+        <div class="desc-list__row">
+          <dt class="desc-list__key">Active</dt>
+          <dd class="desc-list__value">
+            <p class="desc-list__main-value">
+              <span class="tooltip">Current number of infected people</span>
+              <span id="active"></span>
+            </p>
+          </dd>
+        </div>
+      </dl>
+      <div id="donut-chart">
+        <!-- Contains a chart with covid cases for a specific country -->
+      </div>
+    </div>
+    <footer class="card__footer">
+      <p>
+        Last updated at
+        <time datetime="2020-02-03 20:00" id="last-update"
+          >2020-02-03, 20:00</time
         >
+      </p>
+    </footer>
+  </section>
 
-        <datalist id="all-countries"></datalist>
+  <div class="card card--11" id="daily-cases-record">
+    <h3 class="card__heading">Daily cases record</h3>
+    <div class="card__body">
+      <div class="calendar-sheet calendar-sheet--small">
+        <time datetime="1970-01" class="calendar-sheet__month">1</time>
+        <time datetime="1970-01-01" class="calendar-sheet__day">1</time>
+        <time datetime="1970" class="calendar-sheet__year">1970</time>
+      </div>
+      <b class="card__important card__important--small">0</b>
     </div>
+  </div>
 
-    <div class="card card--8">
-        <h3 class="card__heading">
-            New cases today:
-        </h3>
-        <strong class="important-text important-text--large" id="new_confirmed_important">
-            + 123 456
-        </strong>
+  <div class="card card--12" id="death-rate-record">
+    <h3 class="card__heading">Highest mortality</h3>
+    <div class="card__body">
+      <div class="calendar-sheet calendar-sheet--small">
+        <time datetime="1970-01" class="calendar-sheet__month">1</time>
+        <time datetime="1970-01-01" class="calendar-sheet__day">1</time>
+        <time datetime="1970" class="calendar-sheet__year">1970</time>
+      </div>
+      <b class="card__important card__important--small">0</b>
     </div>
+  </div>
 
-    <div class="card card--9">
-        <figure id="line-chart">
-            <!-- Contains a timeline with covid cases for a specific country -->
-        </figure>
+  <div class="card card--13" id="most-recovered-record">
+    <h3 class="card__heading">Most recovered</h3>
+    <div class="card__body">
+      <div class="calendar-sheet calendar-sheet--small">
+        <time datetime="1970-01" class="calendar-sheet__month">1</time>
+        <time datetime="1970-01-01" class="calendar-sheet__day">1</time>
+        <time datetime="1970" class="calendar-sheet__year">1970</time>
+      </div>
+      <b class="card__important card__important--small">0</b>
     </div>
-
-    <section class="card card--10" id="country-details">
-        <h3 class="card__heading">Details</h3>
-        <div class="card__body">
-            <dl class="desc-list">
-                <div class="desc-list__row">
-                    <dt class="desc-list__key">Total</dt>
-                    <dd class="desc-list__value">
-                        <p class="desc-list__main-value">
-                            <span class="tooltip">Total from the beginning to now</span>
-                            <span id="confirmed"></span>
-                        </p>
-                        <p class="desc-list__second-value">
-                            <span class="tooltip">New daily cases</span>
-                            <span id="new_confirmed"></span>
-                        </p>
-                    </dd>
-                </div>
-                <div class="desc-list__row">
-                    <dt class="desc-list__key">Recovered</dt>
-                    <dd class="desc-list__value">
-                        <p class="desc-list__main-value">
-                            <span class="tooltip">Recovered from the beginning to now</span>
-                            <span id="recovered"></span>
-                        </p>
-                        <p class="desc-list__second-value">
-                            <span class="tooltip">New daily recovered</span>
-                            <span id="new_recovered"></span>
-                        </p>
-                    </dd>
-                </div>
-                <div class="desc-list__row">
-                    <dt class="desc-list__key">Deaths</dt>
-                    <dd class="desc-list__value">
-                        <p class="desc-list__main-value">
-                            <span class="tooltip">Deaths from the beginning to now</span>
-                            <span id="deaths"></span>
-                        </p>
-                        <p class="desc-list__second-value">
-                            <span class="tooltip">New daily deaths</span>
-                            <span id="new_deaths"></span>
-                        </p>
-                    </dd>
-                </div>
-                <div class="desc-list__row">
-                    <dt class="desc-list__key">Active</dt>
-                    <dd class="desc-list__value">
-                        <p class="desc-list__main-value">
-                            <span class="tooltip">Current number of infected people</span>
-                            <span id="active"></span>
-                        </p>
-                    </dd>
-                </div>
-            </dl>
-            <div id="donut-chart">
-                <!-- Contains a chart with covid cases for a specific country -->
-            </div>
-        </div>
-        <footer class="card__footer">
-            <p>Last updated at <time datetime="2020-02-03 20:00" id="last-update">2020-02-03, 20:00</time></p>
-        </footer>
-    </section>
-
-    <div class="card card--11" id="daily-cases-record">
-        <h3 class="card__heading">Daily cases record</h3>
-        <div class="card__body">
-            <div class="calendar-sheet">
-                <time datetime="1970-01" class="calendar-sheet__month">January</time>
-                <time datetime="1970-01-01" class="calendar-sheet__day">1</time>
-                <time datetime="1970" class="calendar-sheet__year">1970</time>
-            </div>
-            <b class="card__important"></b>
-        </div>
-    </div>
-
-    <div class="card card--12" id="death-rate-record">
-        <h3 class="card__heading">Highest mortality</h3>
-        <div class="card__body">
-            <div class="calendar-sheet">
-                <time datetime="1970-01" class="calendar-sheet__month">January</time>
-                <time datetime="1970-01-01" class="calendar-sheet__day">1</time>
-                <time datetime="1970" class="calendar-sheet__year">1970</time>
-            </div>
-            <b class="card__important"></b>
-        </div>
-    </div>
-
-    <div class="card card--13" id="most-recovered-record">
-        <h3 class="card__heading">Most recovered</h3>
-        <div class="card__body">
-            <div class="calendar-sheet">
-                <time datetime="1970-01" class="calendar-sheet__month">January</time>
-                <time datetime="1970-01-01" class="calendar-sheet__day">1</time>
-                <time datetime="1970" class="calendar-sheet__year">1970</time>
-            </div>
-            <b class="card__important"></b>
-        </div>
-    </div>
+  </div>
 </main>
-{% endblock %}
-
-{% block script %}
+{% endblock %} {% block script %}
 <script src="js/country.js"></script>
 {% endblock %}

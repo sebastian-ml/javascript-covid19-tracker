@@ -3,14 +3,16 @@
 @use 'scss-partials/clean-tags';
 @use 'scss-partials/fontello';
 
-*, *:after, *:before {
+*,
+*:after,
+*:before {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
 .sidebar {
-  @include mixins.prefix(display, flex);
+  display: flex;
   flex-direction: column;
   position: fixed;
   z-index: 100;
@@ -35,7 +37,7 @@
     }
 
     .icon-open-arrows {
-      @include mixins.prefix(transform, rotate(-180deg), webkit ms);
+      transform: rotate(-180deg);
 
       .icon-right-open {
         color: #fff;
@@ -46,11 +48,12 @@
 
 .header {
   @include mixins.flexCentered;
-  @include mixins.prefix(display, flex);
+  display: flex;
   height: variables.$headerHeight;
   color: variables.$primaryFontColor;
   background-color: variables.$primaryColor;
-  box-shadow: 0 1px 1px 0 rgba(65,65,65,0.8);
+  box-shadow: 0 1px 1px 0 rgba(65, 65, 65, 0.8);
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
   left: 0;
@@ -64,12 +67,12 @@
 
   &__item {
     height: variables.$sidebarWidth;
-    @include mixins.prefix(display, flex);
+    display: flex;
     align-items: center;
   }
 
   &__link {
-    @include mixins.prefix(display, flex);
+    display: flex;
     align-items: center;
     color: variables.$primaryFontColor;
     height: 100%;
@@ -91,7 +94,7 @@
   display: none;
 
   &__list {
-    @include mixins.prefix(display, flex);
+    display: flex;
     list-style: none;
 
     &-item {
@@ -100,7 +103,7 @@
   }
 
   &__link {
-    @include mixins.prefix(display, flex);
+    display: flex;
     align-items: center;
     height: 100%;
     transition: all variables.$shortAnimation ease-in-out;
@@ -138,43 +141,43 @@
 .container {
   width: 1700px;
   max-width: calc(100% - 2 * #{variables.$sidebarWidth});
-  @include mixins.prefix(display, flex);
+  display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .grid {
-  @include mixins.prefix(display, grid, ms);
+  display: grid;
   grid-auto-rows: auto;
   grid-template-columns: 1fr;
   grid-gap: variables.$gridGap;
   grid-template-areas:
-  'card1'
-  'card2'
-  'card3'
-  'card4'
-  'card5'
-  'card6';
+    "card1"
+    "card2"
+    "card3"
+    "card4"
+    "card5"
+    "card6";
 
   &--country {
     grid-template-areas:
-    'card7'
-    'card8'
-    'card9'
-    'card10'
-    'card11'
-    'card12'
-    'card13';
+      "card7"
+      "card8"
+      "card9"
+      "card10"
+      "card11"
+      "card12"
+      "card13";
   }
 }
 
 .card {
   min-width: 0;
-  @include mixins.prefix(display, flex);
+  display: flex;
   flex-direction: column;
   padding: 2.15em;
   border-radius: 7px;
-  font-size: .95rem;
+  font-size: 0.95rem;
   background-color: variables.$primaryColor;
 
   @for $i from 1 through 13 {
@@ -194,7 +197,7 @@
   }
 
   &__footer {
-    font-size: .75em;
+    font-size: 0.75em;
     margin-top: auto;
     text-align: center;
     color: #a9a9a9;
@@ -202,19 +205,24 @@
 
   &__important {
     font-size: 1.9em;
-    @include mixins.prefix(display, flex);
+    display: flex;
     align-items: center;
+    white-space: nowrap;
+
+    &--small {
+      font-size: 1em;
+    }
   }
 }
 
 .desc-list {
   font-size: 1em;
-  @include mixins.prefix(display, grid, ms);
+  display: grid;
   grid-auto-rows: 1fr;
-  grid-row-gap: .5em;
+  grid-row-gap: 0.5em;
 
   &__row {
-    @include mixins.prefix(display, flex);
+    display: flex;
     align-items: center;
     justify-content: space-between;
   }
@@ -225,7 +233,7 @@
 
   &__value {
     font-size: 1.5em;
-    @include mixins.prefix(display, flex);
+    display: flex;
     align-items: flex-end;
     flex-direction: column;
   }
@@ -242,7 +250,7 @@
   }
 
   &__second-value {
-    font-size: .7em;
+    font-size: 0.7em;
     position: relative;
 
     &:hover {
@@ -275,9 +283,9 @@
   left: 50%;
   display: inline-block;
   visibility: hidden;
-  padding: .4em 0.9em;
+  padding: 0.4em 0.9em;
   transition: opacity variables.$shortAnimation ease-in-out;
-  @include mixins.prefix(transform, translateX(-50%), webkit ms);
+  transform: translateX(-50%);
   text-align: center;
   white-space: nowrap;
   opacity: 0;
@@ -307,7 +315,7 @@
   &__inner {
     display: block;
     height: 100%;
-    @include mixins.prefix(display, flex);
+    display: flex;
     justify-content: space-between;
     flex-direction: column;
     align-items: center;
@@ -318,26 +326,26 @@
   }
 
   &__inactive {
-      background-color: variables.$primaryFontColor;
-      display: block;
-      height: 3px;
-      width: 100%;
-      transition: background-color variables.$shortAnimation ease-in-out;
+    background-color: variables.$primaryFontColor;
+    display: block;
+    height: 3px;
+    width: 100%;
+    transition: background-color variables.$shortAnimation ease-in-out;
     &::before {
       background-color: inherit;
-      content: '';
+      content: "";
       display: block;
       height: 3px;
       width: 100%;
-      @include mixins.prefix(transform, translateY(10px), webkit ms);
+      transform: translateY(10px);
     }
     &::after {
       background-color: inherit;
-      content: '';
+      content: "";
       display: block;
       height: 3px;
       width: 100%;
-      @include mixins.prefix(transform, translateY(17px), webkit ms);
+      transform: translateY(17px);
     }
   }
 
@@ -346,19 +354,20 @@
     background-color: #ffffff;
     height: 30px;
     width: 3px;
-    @include mixins.prefix(transform, rotate(45deg), webkit ms);
+    transform: rotate(45deg);
+
     &::after {
       background-color: inherit;
-      content: '';
+      content: "";
       display: block;
       height: 100%;
-      @include mixins.prefix(transform, rotate(90deg), webkit ms);
+      transform: rotate(90deg);
     }
   }
 }
 
 #donut-chart {
-  @include mixins.prefix(display, flex);
+  display: flex;
   justify-content: center;
 }
 
@@ -367,7 +376,9 @@
 }
 
 .theme-btn {
-  @include mixins.prefix(appearance, none, webkit moz);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   width: 40px;
   border-radius: 28px;
   background-color: variables.$primaryColor;
@@ -388,12 +399,12 @@
       background-color: #000;
     }
     &:after {
-      content: 'LIGHT';
+      content: "LIGHT";
     }
   }
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 2px;
     right: 2px;
@@ -410,9 +421,9 @@
     width: 100%;
     text-align: center;
     left: 0;
-    content: 'DARK';
+    content: "DARK";
     color: #fff;
-    font-size: .7em;
+    font-size: 0.7em;
     white-space: nowrap;
   }
 }
@@ -421,7 +432,7 @@
   height: variables.$headerHeight;
   background-color: variables.$primaryColor;
   margin-left: variables.$sidebarWidth;
-  @include mixins.prefix(display, flex);
+  display: flex;
   @include mixins.flexCentered;
 }
 
@@ -434,7 +445,7 @@
     display: inline-block;
     height: 25px;
     width: 25px;
-    margin: 0 .4em;
+    margin: 0 0.4em;
 
     // Each social media has it own color
     &:nth-child(1):hover .social__link {
@@ -458,9 +469,9 @@
     border-radius: 50%;
     color: variables.$primaryColor;
     background-color: variables.$primaryFontColor;
-    @include mixins.prefix(display, flex);
+    display: flex;
     @include mixins.flexCentered;
-    transition: all variables.$mediumAnimation cubic-bezier(.43,1.5,1,1);
+    transition: all variables.$mediumAnimation cubic-bezier(0.43, 1.5, 1, 1);
 
     &:hover {
       transform: translateY(-5px);
@@ -475,12 +486,12 @@
 }
 
 .row {
-  @include mixins.prefix(display, flex);
+  display: flex;
   flex-flow: row wrap;
 }
 
 .row__cell {
-  @include mixins.prefix(flex, 1 0 400px, webkit-box webkit ms);
+  flex: 1 0 400px;
 }
 
 .about {
@@ -493,6 +504,18 @@
 }
 
 .form {
+  textarea:focus::-webkit-input-placeholder {
+    color: transparent;
+  }
+  textarea:focus::-moz-placeholder {
+    color: transparent;
+  }
+  textarea:focus:-ms-input-placeholder {
+    color: transparent;
+  }
+  textarea:focus::-ms-input-placeholder {
+    color: transparent;
+  }
   textarea:focus::placeholder {
     color: transparent;
   }
@@ -505,7 +528,7 @@
 }
 
 .input {
-  padding: 0 .7em;
+  padding: 0 0.7em;
   width: 100%;
   border-radius: 5px;
   height: 3em;
@@ -513,7 +536,7 @@
 
   &--large {
     height: 10em;
-    padding: .7em;
+    padding: 0.7em;
   }
 }
 
@@ -522,12 +545,12 @@
   border-radius: 5px;
   border: transparent;
   color: #000;
-  padding: .7em 1.3em;
+  padding: 0.7em 1.3em;
   background-color: #fff;
   transition: background-color variables.$mediumAnimation ease-in-out;
 
   &:hover {
-    background-color: rgba(255, 255, 255, .8);
+    background-color: rgba(255, 255, 255, 0.8);
   }
 }
 
@@ -540,11 +563,19 @@
   border-radius: 7px;
   background-color: transparent;
   color: black;
-  @include mixins.prefix(display, flex);
+  display: flex;
   flex-direction: column;
   align-items: center;
   font-size: 1.1rem;
   width: 75px;
+
+  &--small {
+    $size: 60px;
+
+    font-size: 0.8rem;
+    width: $size;
+    height: $size;
+  }
 
   &__year {
     border-radius: 0 0 7px 7px;
@@ -558,7 +589,8 @@
     border-radius: 7px 7px 0 0;
   }
 
-  &__day, &__year {
+  &__day,
+  &__year {
     background-color: #fff;
     width: 100%;
     text-align: center;
@@ -570,13 +602,23 @@
   }
 }
 
-#daily-cases-record, #death-rate-record, #most-recovered-record {
+#daily-cases-record,
+#death-rate-record,
+#most-recovered-record {
   .card__body {
-    @include mixins.prefix(display, flex);
+    display: flex;
     justify-content: space-evenly;
     align-items: center;
     height: 100%;
   }
 }
 
-@import 'scss-partials/media-query';
+#card--11,
+#card--12,
+#card--13 {
+  .card__body {
+    justify-content: center;
+  }
+}
+
+@import "scss-partials/media-query";

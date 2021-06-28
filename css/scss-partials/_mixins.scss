@@ -1,17 +1,3 @@
-@mixin prefix($property, $value, $prefixes: false) {
-  @if $value == flex {
-    #{$property}: -webkit-box;
-    #{$property}: -ms-flexbox;
-    #{$property}: -webkit-flex;
-    #{$property}: flex;
-  } @else {
-    @each $prefix in $prefixes {
-      -#{$prefix}-#{$property}: $value;
-    }
-    #{$property}: $value;
-  }
-}
-
 @mixin flexCentered() {
   justify-content: center;
   align-items: center;

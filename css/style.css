@@ -420,6 +420,14 @@ textarea {
 .btn-label {
   margin-top: auto;
 }
+.btn-label--mobile {
+  margin: 0;
+  position: absolute;
+  right: 20px;
+}
+.btn-label--mobile .theme-btn {
+  margin: 0;
+}
 
 .theme-btn {
   -webkit-appearance: none;
@@ -674,6 +682,10 @@ textarea {
   main,
 .footer {
     margin-left: 70px;
+  }
+
+  .btn-label--mobile {
+    display: none;
   }
 }
 /*Extra large devices (large desktops, 1200px and up)*/

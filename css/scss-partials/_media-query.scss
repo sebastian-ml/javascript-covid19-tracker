@@ -54,6 +54,10 @@
   .footer {
     margin-left: variables.$sidebarWidth;
   }
+
+  .btn-label--mobile {
+    display: none;
+  }
 }
 
 /*Extra large devices (large desktops, 1200px and up)*/

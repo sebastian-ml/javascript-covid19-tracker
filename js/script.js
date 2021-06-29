@@ -158,6 +158,22 @@ function updateCovidDetails(covidStats) {
   lastUpdateContainer.innerText = lastUpdate.toUTCString();
 }
 
+function showLoader(container) {
+  const wrapper = document.createElement("div");
+  const loader = document.createElement("div");
+
+  wrapper.classList.add("loader-wrapper");
+  loader.classList.add("loader");
+  wrapper.appendChild(loader);
+
+  container.appendChild(wrapper);
+}
+
+function deleteLoader(container) {
+  const loader = container.getElementsByClassName("loader-wrapper")[0];
+  loader.remove();
+}
+
 /**
  * Draw a line chart.
  *

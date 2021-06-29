@@ -35,6 +35,13 @@ const countryInput = document.getElementById("all-countries-list");
 
 // Show covid data for the selected country
 countryInput.addEventListener("change", async (e) => {
+  const chartContainer = document.getElementById("line-chart");
+  while (chartContainer.firstChild) {
+    chartContainer.removeChild(chartContainer.firstChild);
+  }
+
+  showLoader(chartContainer);
+
   const chosenCountryHTML = document.querySelector(
     `option[value="${e.target.value}"]`
   );
@@ -47,6 +54,8 @@ countryInput.addEventListener("change", async (e) => {
   const newConfirmed = document.getElementById("new_confirmed_important");
 
   const countryData = await fetchData(countryURL);
+  deleteLoader(chartContainer);
+
   const countryTimeline = countryData.timeline;
 
   const records = findCovidRecords(countryTimeline);

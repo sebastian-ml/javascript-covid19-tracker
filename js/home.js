@@ -8,7 +8,12 @@ const newConfirmed = document.getElementById("new_confirmed_important");
 const covidStatsURL = "https://corona-api.com/timeline";
 const covidData = getAndUpdateCurrentData("covidCasesWorld", covidStatsURL);
 
+const chartContainer = document.getElementById("line-chart");
+showLoader(chartContainer);
+
 covidData.then((covidData) => {
+  deleteLoader(chartContainer);
+
   sessionStorage.setItem("covidCasesWorld", JSON.stringify(covidData));
   const covidRecords = findCovidRecords(covidData);
 

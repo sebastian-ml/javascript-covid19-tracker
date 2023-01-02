@@ -1,7 +1,7 @@
 # COVID-19 Tracker
 
-<p>Website which shows covid statistics for countries around the world. It contains things like charts, number of deaths, recovery etc.</p>
-<p>The project is being made for learning purposes.</p>
+<p>Website that shows covid statistics for countries around the world. It contains things like charts, number of deaths, recovery etc.</p>
+<p>The project was made for learning purposes.</p>
 
 ## Technology
 
